@@ -43,7 +43,7 @@ class Model {
     }   
 
     function getPantalonYdescripcion($dato){
-        $query = $this->db->prepare('SELECT * FROM pantalon JOIN marca ON (pantalon.id_marca=marca.id_marca) AND pantalon.id_pantalon = ?');
+        $query = $this->db->prepare('SELECT * FROM pantalon JOIN marca ON (pantalon.id_marca=marca.id_marca) AND pantalon.id_pantalones = ?');
         $query->execute(array($dato));
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;

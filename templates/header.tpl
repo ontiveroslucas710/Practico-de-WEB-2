@@ -9,10 +9,16 @@
     <title>My Label ® - Sitio Oficial</title>
 </head>
 <body>
+<div>
     <header>
         <h1>My Label ®</h1>
         <h3 class="sub-title">Pantalones</h2>
     </header>
+    <div style="text-align: right;">
+        <h3>Hola -</h3>
+    </div>
+
+</div>
 
     <nav>
         <div class="menu">

@@ -25,22 +25,16 @@ class UserController{
     }
 
 
-    function mostrar(){
-        $this->view->verificar();
-    }
-
     function verificaForm(){
         $nombre= $_POST['usuario'];        
-        $contraseña= $_POST['contraseña'];     
-           
+        $contraseña= $_POST['contraseña'];       
         
         if(isset($nombre)){
             $BDnombre= $this->model->getusuario($nombre);
 
-            if(isset($BDnombre)){                
+            if(isset($BDnombre) && $BDnombre){                
                 if(password_verify($contraseña, $BDnombre->password)){
-                    session_start();
-                    $_SESSION['ID_USER']= $BDnombre->id;
+                    session_start();                    
                     $_SESSION['USERNAME']= $BDnombre->nombre;
                     $this->view->verificar();
                 }else{

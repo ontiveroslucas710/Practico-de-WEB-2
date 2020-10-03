@@ -241,5 +241,8 @@ thead{
     .lista-ropa{
         margin-bottom: 40px;
     }
-   
+   .dividir{
+       display: flex;
+       
+   }
 }

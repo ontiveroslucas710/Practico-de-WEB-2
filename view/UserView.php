@@ -21,6 +21,7 @@ class UserView {
 
     }
     function verificar(){
+        
         $this->smarty->display('templates/home.tpl');
     }
 

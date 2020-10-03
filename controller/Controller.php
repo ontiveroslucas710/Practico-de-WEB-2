@@ -10,6 +10,17 @@ class Controller{
         $this->view= new View();
         $this->model= new Model();
     }
+
+    private function checkLoggedIn(){
+        session_start();
+        if(!$_SESSION["USERNAME"]){
+            $this->view->nuestroRegistro();
+            die();
+        }
+
+    }
+
+
     //####### FUNCIONES PARA MOSTRAR DIRECTAMENTE SIN GENERAR ACCIONES ##########
     //funcion para ver home
     function home(){
@@ -47,20 +58,13 @@ class Controller{
     function verMas($params){
         $id =$params[':ID'];
         $dato=$this->model->getPantalonYdescripcion($id);
-        var_dump($dato);
-        die();
         $this->view->filtroCompleto($dato);  
     }
 
 
     //Agrega pantalones en la lista completa
     function insertPantalon(){
-        //Si estas conectado{
-            //permiti hacer insertar
-        //}
-        //else{
-            //mandalo a la pagina para que se logge $this->view->nuestroRegistro();
-        //}
+       $this->checkLoggedIn();
         
         $nombre=$_POST['nombre'];
         $talle=$_POST['talle'];
@@ -74,6 +78,7 @@ class Controller{
 
     //Borra pantalon de la lista completa
     function borrarPantalon($params = null){
+        $this->checkLoggedIn();
         $id_borrar= $params[':ID'];
         $this->model->deletPantalon($id_borrar);        
         $this->view->volverlocation();        
@@ -81,12 +86,14 @@ class Controller{
 
     //Tanto showFromEdit como Edit sirven para poder editar el elemento seleccionado
     function showFormEdit($params){
+        $this->checkLoggedIn();
         $id_editar= $params[':ID'];
         $dato = $this->model->getById($id_editar);
         $this->view->mostrarFormularioEditar($dato);
     }
 
     function Edit(){
+        $this->checkLoggedIn();
         $dato =$_POST['id'];
         $nombre_editar=$_POST['nombre_edit'];
         $talle_editar=$_POST['talle_edit'];
