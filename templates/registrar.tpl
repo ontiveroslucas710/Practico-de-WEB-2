@@ -9,11 +9,11 @@
                 <form action="verificaForm" method='POST'>
                     <div class="formulario-in">
                         <label>Usuario</label>
-                        <input type="text" name="usuario" id="" required placeholder="Usuario">
+                        <input type="text" name="usuario" required placeholder="Usuario">
                     </div>                    
                     <div class="formulario-in">
                         <label>Contraseña </label>
-                        <input type="password" name="contraseña" id="" required  placeholder="contraseña">
+                        <input type="password" name="contraseña" required  placeholder="contraseña">
                     </div>                    
                     <div>
                         <input type="submit" id="btn-verificar" value="Ingresar">

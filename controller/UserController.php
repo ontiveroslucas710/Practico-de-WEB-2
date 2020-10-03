@@ -33,9 +33,10 @@ class UserController{
         $nombre= $_POST['usuario'];        
         $contraseña= $_POST['contraseña'];     
            
+        
         if(isset($nombre)){
             $BDnombre= $this->model->getusuario($nombre);
-                    
+
             if(isset($BDnombre)){                
                 if(password_verify($contraseña, $BDnombre->password)){
                     session_start();
