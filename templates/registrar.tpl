@@ -5,22 +5,18 @@
             <h2>Loggeate</h2>
         
             <div class="formulario">
-                <form action="">
+
+                <form action="verificaForm" method='POST'>
                     <div class="formulario-in">
-                        <label>Nombre</label>
-                        <input type="text" name="nombre" id="" required placeholder="Name and Surname">
-                    </div>
+                        <label>Usuario</label>
+                        <input type="text" name="usuario" id="" required placeholder="Usuario">
+                    </div>                    
                     <div class="formulario-in">
-                        <label>Email </label>
-                        <input type="email" name="email" id="" required placeholder="Email address">
-                    </div>
-                    <div class="formulario-in">
-                        <label>Contraceña </label>
-                        <input type="password" name="" id="" required >
-                    </div>
-                    
+                        <label>Contraseña </label>
+                        <input type="password" name="contraseña" id="" required  placeholder="contraseña">
+                    </div>                    
                     <div>
-                        <input type="button" id="btn-verificar" value="Ingresar">
+                        <input type="submit" id="btn-verificar" value="Ingresar">
                     </div>
                 </form>
             </div>

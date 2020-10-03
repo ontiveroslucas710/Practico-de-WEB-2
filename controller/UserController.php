@@ -15,38 +15,38 @@ class UserController{
     function logearse(){
         $this->view->muestralogin();
     }
+
     function cargarlogin(){
-
-        $nombre=$_POST['nombre'];
-        $usuario=$_POST['usuario'];
-        $contra=$_POST['contra'];
-        $hash = password_hash($contra, PASSWORD_DEFAULT);
-
-        $this->model->cargaUsuario($nombre,$usuario,$hash);
-        
+        $nombre=$_POST['usuario'];
+        $contra=$_POST['contraseña'];
+        $hash = password_hash($contra, PASSWORD_DEFAULT);        
+        $this->model->cargaUsuario($nombre, $hash);       
         $this->view->cargar();
     }
+
+
     function mostrar(){
         $this->view->verificar();
     }
+
     function verificaForm(){
-        $nombre= $_POST['nombre'];
-        $mail= $_POST['email'];
-        $contraseña= $_POST['contraseña'];
-        
-        if(isset($nombre) && isset($contraseña)){
+        $nombre= $_POST['usuario'];        
+        $contraseña= $_POST['contraseña'];     
+           
+        if(isset($nombre)){
             $BDnombre= $this->model->getusuario($nombre);
-            
-            if(isset($BDnombre)){
-                
-                if(password_verify($contraseña ,$BDnombre->password)){
-                    $this->view->verificar("correcto!!!!!!!!!");
+                    
+            if(isset($BDnombre)){                
+                if(password_verify($contraseña, $BDnombre->password)){
+                    session_start();
+                    $_SESSION['ID_USER']= $BDnombre->id;
+                    $_SESSION['USERNAME']= $BDnombre->nombre;
+                    $this->view->verificar();
                 }else{
-                    $this->view->verificar("incorrecto .........");
+                    $this->view->error();
                 }
             }else{
-
-                $this->view->verificar("carga los input");
+                $this->view->error("carga los input");
 
             }
         }

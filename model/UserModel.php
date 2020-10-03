@@ -11,11 +11,14 @@ class UserModel {
     function getusuario($dato){
         $query= $this->db->prepare('SELECT * FROM usuario WHERE nombre=?');
         $query->execute(array($dato));
-        return $query;
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
-    function cargaUsuario($nombre,$usuario,$contra){
-        $query= $this->db->prepare('INSERT INTO usuario (nombre,correo,contraseña) VALUE (?,?,?)');
-        $query->execute(array($nombre,$usuario,$contra));
+
+
+    function cargaUsuario($nombre,$hash){
+        $query= $this->db->prepare('INSERT INTO usuario (nombre,password) VALUE (?,?)');
+        $query->execute(array($nombre,$hash));
     }
     
 }
