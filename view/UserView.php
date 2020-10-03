@@ -20,12 +20,13 @@ class UserView {
         $this->smarty->display('templates/login.tpl');
 
     }
-    function verificar($titulo=""){
-        
-        $this->smarty->assign('titulo' , $titulo);
+    function verificar(){
+        $this->smarty->display('templates/home.tpl');
+    }
 
-        $this->smarty->display('templates/login.tpl');
-
+    function error($nada = ""){
+        $this->smarty->assign('titulo', $nada);
+        $this->smarty->display('templates/mensaje.tpl');
     }
     function cargar(){
         

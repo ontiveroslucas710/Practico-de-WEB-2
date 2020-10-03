@@ -11,7 +11,7 @@
 <body>
     <header>
         <h1>My Label ®</h1>
-        <h3 class="sub-title">Ropa de Moda</h2>
+        <h3 class="sub-title">Pantalones</h2>
     </header>
 
     <nav>

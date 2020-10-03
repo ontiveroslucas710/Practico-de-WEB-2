@@ -9,8 +9,10 @@
         <tr>
             <th>nombre</th>
             <th>Talle</th>
-            <th>marca</th>
-            <th></th>
+            <th>color</th>
+            <th>tela</th>
+            <th>precio</th>
+            <th>Marca</th>
         </tr>
     </thead>
     <tbody>
@@ -18,8 +20,10 @@
         <tr>
             <td>{$dato->nombre}</td>
             <td>{$dato->talle}</td>      
-            <td>{$dato->marca}</td>
-            <td><a href="verMas/{$dato->id_pantalones}">Ver mas</a></td>
+            <td>{$dato->color}</td>
+            <td>{$dato->tela}</td>
+            <td>{$dato->precio}</td>      
+            <td>{$dato->marca}</td>          
         </tr>
   {/foreach}
    </tbody>    

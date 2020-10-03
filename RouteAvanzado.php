@@ -11,14 +11,9 @@
     $r = new Router();
     
     //en la url tenes que poner login para verificar el usuario
-    $r->addRoute("verificaForm", "POST", "UserController", "verificaForm");
-    $r->addRoute("login", "GET", "UserController", "logearse");
+    $r->addRoute("verificaForm", "POST", "UserController", "verificaForm");   
 
-    //en la url tenes que poner input para cargar un usuario a la bd
-    $r->addRoute("addlogin", "POST", "UserController", "cargarlogin");
-    $r->addRoute("input", "GET", "UserController", "mostrar");
-    
-    // RUTAS GENERALES : home, tabla de pantalones, ropa, registrar
+
     $r->addRoute("home", "GET", "Controller", "home");
     $r->addRoute("ropa", "GET", "Controller", "MostrarPantalones");
     $r->addRoute("tabla_de_pantalones", "GET", "Controller", "mostrarTabla");
@@ -26,6 +21,7 @@
 
     //ACCION PARA FILTRAR MARCA
     $r->addRoute("filtro/:ID", "GET", "Controller", "filtrar");
+    $r->addRoute("verMas/:ID", "GET", "Controller", "verMas");
 
     //acciones de la tabla, agregar, borrar, editarX 2 
     $r->addRoute("agregar", "POST", "Controller", "insertPantalon");

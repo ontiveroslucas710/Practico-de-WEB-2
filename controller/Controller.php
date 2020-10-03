@@ -44,10 +44,24 @@ class Controller{
         $dato=$this->model->getPantalonByMarca($id);
         $this->view->filtroParaMarcas($dato);     
     }
+    function verMas($params){
+        $id =$params[':ID'];
+        $dato=$this->model->getPantalonYdescripcion($id);
+        var_dump($dato);
+        die();
+        $this->view->filtroCompleto($dato);  
+    }
 
 
     //Agrega pantalones en la lista completa
     function insertPantalon(){
+        //Si estas conectado{
+            //permiti hacer insertar
+        //}
+        //else{
+            //mandalo a la pagina para que se logge $this->view->nuestroRegistro();
+        //}
+        
         $nombre=$_POST['nombre'];
         $talle=$_POST['talle'];
         $color=$_POST['color'];

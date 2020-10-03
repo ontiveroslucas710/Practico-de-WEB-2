@@ -32,13 +32,18 @@ class View {
 
     //###### Funciones especiales ####
 
-    function filtroParaMarcas($dato){
-        
-        
+    function filtroParaMarcas($dato){ 
         $this->smarty->assign('marca', $dato);
         $this->smarty->display('templates/filtroMarca.tpl');
     }
 
+    function filtroCompleto($dato){
+        $this->smarty->assign('marca', $dato);
+        $this->smarty->display('templates/filtroCompleto.tpl');
+    }
+
+
+    
     function mostrarFormularioEditar($dato){
         $this->smarty->assign('pantalon', $dato);
         $this->smarty->display('templates/formularioEditar.tpl');

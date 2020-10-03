@@ -42,6 +42,13 @@ class Model {
         return $result;
     }   
 
+    function getPantalonYdescripcion($dato){
+        $query = $this->db->prepare('SELECT * FROM pantalon JOIN marca ON (pantalon.id_marca=marca.id_marca) AND pantalon.id_pantalon = ?');
+        $query->execute(array($dato));
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
 
     //###########  FUNCIONES PARA MODIFICAR LA TABLA PRINCIPAL ################
     //AGREGAR PANTALON
