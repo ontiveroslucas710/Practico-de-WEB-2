@@ -3,7 +3,7 @@
   <section class="contactenos">
         <div class="boxformulario"> 
             <h2>Loggeate</h2>
-        
+        <h3>{$mensaje}</h3>
             <div class="formulario">
 
                 <form action="verificaForm" method='POST'>

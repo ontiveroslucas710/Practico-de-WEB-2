@@ -5,19 +5,18 @@
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
-
-    
-
+    define("LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
     $r = new Router();
     
-    //en la url tenes que poner login para verificar el usuario
+    
     $r->addRoute("verificaForm", "POST", "UserController", "verificaForm");   
+    $r->addRoute("registrar", "GET", "UserController", "mostrarRegistro");
+    $r->addRoute("logout", "GET", "UserController", "logout");
 
 
     $r->addRoute("home", "GET", "Controller", "home");
     $r->addRoute("ropa", "GET", "Controller", "MostrarPantalones");
     $r->addRoute("tabla_de_pantalones", "GET", "Controller", "mostrarTabla");
-    $r->addRoute("registrar", "GET", "Controller", "mostrarRegistro");
 
     //ACCION PARA FILTRAR MARCA
     $r->addRoute("filtro/:ID", "GET", "Controller", "filtrar");

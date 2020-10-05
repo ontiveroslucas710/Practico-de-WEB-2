@@ -10,12 +10,11 @@ class Controller{
         $this->view= new View();
         $this->model= new Model();
     }
-
-    private function checkLoggedIn(){
+    
+    function checkLoggedIn(){
         session_start();
-        if(!$_SESSION["USERNAME"]){
-            $this->view->nuestroRegistro();
-            die();
+        if(!isset($_SESSION["USERNAME"])){
+            $this->view->irARegistrar();            
         }
 
     }
@@ -42,10 +41,7 @@ class Controller{
     }    
 
 
-    //funcion para mostrar registro
-    function mostrarRegistro(){
-        $this->view->nuestroRegistro();
-    }
+   
 
 
     //############## FUNCIONES ESPECIALES ##########

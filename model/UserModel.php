@@ -7,6 +7,7 @@ class UserModel {
     function __construct(){
         $this->db= new PDO('mysql:host=localhost;'.'dbname=db_ropa;charset=utf8', 'root', '');        
     }
+    
     //##########  FUNCIONES PARA OBTENER ELEMENTOS  ##########
     function getusuario($dato){
         $query= $this->db->prepare('SELECT * FROM usuario WHERE nombre=?');

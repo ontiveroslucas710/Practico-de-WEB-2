@@ -26,9 +26,7 @@ class View {
         $this->smarty->display('templates/listaPantalones.tpl');     
     }
 
-    function nuestroRegistro(){
-        $this->smarty->display('templates/registrar.tpl');
-    }
+   
 
     //###### Funciones especiales ####
 
@@ -53,7 +51,12 @@ class View {
     function volverlocation(){        
         header("Location: ".BASE_URL."tabla_de_pantalones");        
     }
+
+    function irARegistrar(){
+        header("Location: ".BASE_URL."registrar");       
+    }
    
+ 
     
 }
 

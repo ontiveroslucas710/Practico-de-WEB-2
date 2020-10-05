@@ -10,30 +10,25 @@ class UserView {
 
     function __construct(){
         $this->smarty = new Smarty();
-        $this->title = "cargar login";
     }
     
     //####### FUNCIONES PRINCIPALES DEL LOGIN ########
+  
+//si tipea con errores le mando mensaje
+    function nuestroRegistro($mensaje = ""){
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('templates/registrar.tpl');
 
-    function muestralogin(){
-        $this->smarty->assign('titulo', 'listo para logearse');
-        $this->smarty->display('templates/login.tpl');
-
     }
-    function verificar(){
-        
-        $this->smarty->display('templates/home.tpl');
+    
+//si se conecta lo mando a la home con el nombre en el header
+    function volverALaHome($mensaje = ""){
+        $this->smarty->assign('mensaje', $mensaje);
+        header("Location: ".BASE_URL);
     }
 
-    function error($nada = ""){
-        $this->smarty->assign('titulo', $nada);
-        $this->smarty->display('templates/mensaje.tpl');
-    }
-    function cargar(){
-        
-        $this->smarty->assign('titulo','cargado');
-        $this->smarty->display('templates/mensaje.tpl');
-    }
+
+  
     
     
     
