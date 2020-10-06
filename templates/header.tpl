@@ -16,7 +16,7 @@
     </header>
     <div style="text-align: right;">
         
-        <a href="logout">log out</a>    
+        <a class="btn-borrar" href="logout">log out</a>    
     </div>
 
 </div>

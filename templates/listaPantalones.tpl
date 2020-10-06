@@ -27,8 +27,8 @@
                         <td>{$dato->tela}</td>
                         <td>{$dato->precio}</td>
                         <td>{$dato->marca}</td>
-                        <td><a href="edit/{$dato->id_pantalones}">editar</a></td>
-                        <td><a href="borrar/{$dato->id_pantalones}">borrar</a></td>
+                        <td><a  href="edit/{$dato->id_pantalones}"><img src="./img/icono-editar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        <td><a href="borrar/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
                     </tr>
                     {/foreach}
 
@@ -37,7 +37,7 @@
             </tbody>
             </table>
             <br>
-                <h2>{$titulo}</h2>
+                <h2>Lista de marca y descripcion</h2>
             <table>
                 <thead>
                     <tr>
@@ -53,8 +53,8 @@
                     <tr>
                         <td>{$dato->marca}</td>
                         <td>{$dato->descripcion}</td>
-                        <td><a href="editMarca/{$dato->id_marca}">editar</a></td>
-                        <td><a href="borrarMarca/{$dato->id_marca}">borrar</a></td>
+                        <td><a  href="editMarca/{$dato->id_marca}"><img src="./img/icono-editar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        <td><a  href="borrarMarca/{$dato->id_marca}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
                     </tr>
                     {/foreach}
 
