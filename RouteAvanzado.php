@@ -24,9 +24,14 @@
 
     //acciones de la tabla, agregar, borrar, editarX 2 
     $r->addRoute("agregar", "POST", "Controller", "insertPantalon");
+    $r->addRoute("agregarMarca", "POST", "Controller", "agregarMarca");
     $r->addRoute("borrar/:ID", "GET", "Controller", "borrarPantalon");
-    $r->addRoute("edit/:ID", "GET", "Controller", "showFormEdit"); 
+    $r->addRoute("edit/:ID", "GET", "Controller", "showFormEdit");
     $r->addRoute("edit", "POST", "Controller", "Edit"); 
+
+    $r->addRoute("borrarMarca/:ID", "GET", "Controller", "borrarMarca");
+    $r->addRoute("editMarca/:ID", "GET", "Controller", "showFormEditMarca"); 
+    $r->addRoute("editMarca", "POST", "Controller", "editMarca"); 
    
     //Ruta por defecto.
     $r->setDefaultRoute("Controller", "home");

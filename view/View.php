@@ -10,7 +10,8 @@ class View {
     }
     
     //####### FUNCIONES PRINCIPALES DEL VIEW ########
-    function nuestraHome(){
+    function nuestraHome($conectado = ""){
+        $this->smarty->assign('conectado', $conectado);
         $this->smarty->display('templates/home.tpl');
     }
 
@@ -20,9 +21,11 @@ class View {
         $this->smarty->display('templates/pantalones_muestra.tpl');
     }
 
-    function listaDePantalones($dato){
-        $this->smarty->assign('titulo','lista de pantalones');       
-        $this->smarty->assign('panta', $dato);       
+    function listaDePantalones($dato, $datoMarca){
+        $this->smarty->assign('titulo','lista de pantalones'); 
+        $this->smarty->assign('titulo2','lista de marcas');
+        $this->smarty->assign('marcas', $datoMarca);       
+        $this->smarty->assign('panta', $dato); 
         $this->smarty->display('templates/listaPantalones.tpl');     
     }
 
@@ -47,13 +50,18 @@ class View {
         $this->smarty->display('templates/formularioEditar.tpl');
     }
 
+    function mostrarForumarioEditarMarca($datoMarca){
+        $this->smarty->assign('marca', $datoMarca);
+        $this->smarty->display('templates/formularioEditarMarca.tpl');
+    }
+    
     
     function volverlocation(){        
         header("Location: ".BASE_URL."tabla_de_pantalones");        
     }
 
     function irARegistrar(){
-        header("Location: ".BASE_URL."registrar");       
+        header("Location: ".BASE_URL."registrar");
     }
    
  

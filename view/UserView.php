@@ -6,7 +6,6 @@ require_once './libs/smarty/Smarty.class.php';
 
 class UserView {
 
-    private $title;
 
     function __construct(){
         $this->smarty = new Smarty();
@@ -18,13 +17,17 @@ class UserView {
     function nuestroRegistro($mensaje = ""){
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('templates/registrar.tpl');
-
     }
+
+
     
 //si se conecta lo mando a la home con el nombre en el header
-    function volverALaHome($mensaje = ""){
-        $this->smarty->assign('mensaje', $mensaje);
-        header("Location: ".BASE_URL);
+    function volverALaHome($conectado = ""){
+        $this->smarty->assign('conectado', $conectado);
+        $this->smarty->display('templates/home.tpl');
+    }
+    function volverARegistro(){
+        header("Location: ".BASE_URL."registrar");
     }
 
 

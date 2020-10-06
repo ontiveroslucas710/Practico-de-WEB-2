@@ -15,13 +15,8 @@
         <h3 class="sub-title">Pantalones</h2>
     </header>
     <div style="text-align: right;">
-    {if $mensaje == ""}
-        <h3></h3>
-    {else $mensaje}
-        <h3>Hola - {$mensaje}</h3>
-        <a href="logout">log out</a>
-    {/if}
-    
+        
+        <a href="logout">log out</a>    
     </div>
 
 </div>

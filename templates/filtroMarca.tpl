@@ -1,8 +1,6 @@
 {include file= 'header.tpl'}
 <section class="guiaTRopa">
-
-
-    <h2></h2>
+    
   
 <table>
     <thead>

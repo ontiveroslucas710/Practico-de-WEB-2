@@ -18,18 +18,17 @@ class UserController{
 
     function verificaForm(){
         $nombre= $_POST['usuario'];        
-        $contraseña= $_POST['contraseña'];   
+        $contraseña= $_POST['contraseña'];  
         
         if(isset($nombre)){
             $BDusuario= $this->Usermodel->getusuario($nombre);
             if(isset($BDusuario) && $BDusuario){                
                 if(password_verify($contraseña, $BDusuario->password)){
-                    session_start();                    
+                    session_start();
                     $_SESSION['USERNAME']= $BDusuario->nombre;
-                    $this->Userview->volverALaHome($nombre);
+                    $this->Userview->volverALaHome("estas conectado");                    
                 }else{
-                    $this->Userview->nuestroRegistro("Contraseña Incorrecta");
-                   
+                    $this->Userview->nuestroRegistro("Contraseña Incorrecta");                   
                 }
             }else{
                 $this->Userview->nuestroRegistro("el usuario no existe");             
@@ -41,7 +40,7 @@ class UserController{
     function logout(){
         session_start();
         session_destroy();
-        $this->Userview->volverALaHome();
+        $this->Userview->volverARegistro();
     }
     
 }

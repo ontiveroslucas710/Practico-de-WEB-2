@@ -11,10 +11,11 @@ class Controller{
         $this->model= new Model();
     }
     
-    function checkLoggedIn(){
+    private function checkLoggedIn(){
         session_start();
         if(!isset($_SESSION["USERNAME"])){
-            $this->view->irARegistrar();            
+            $this->view->irARegistrar();
+            die();
         }
 
     }
@@ -37,7 +38,8 @@ class Controller{
     //funcion para mostrar Lista de Pantalones y la tabla completa
     function mostrarTabla(){      
         $dato=$this->model->getPantalones();
-        $this->view->listaDePantalones($dato);            
+        $datoMarca = $this->model->getMarca();
+        $this->view->listaDePantalones($dato, $datoMarca);            
     }    
 
 
@@ -61,23 +63,35 @@ class Controller{
     //Agrega pantalones en la lista completa
     function insertPantalon(){
        $this->checkLoggedIn();
-        
         $nombre=$_POST['nombre'];
         $talle=$_POST['talle'];
         $color=$_POST['color'];
         $tela=$_POST['tela'];
         $precio=$_POST['precio'];
-        $marca=$_POST['marca'];                  
-        $this->model->addPpantalon($nombre,$talle,$color,$tela,$precio,$marca);
+        $marcas=$_POST['marca'];
+        for ($i=0;$i<count($marcas);$i++)  {
+           $marcaSeleccionada = $marcas[$i];
+        }
+        $this->model->addPpantalon($nombre,$talle,$color,$tela,$precio,$marcaSeleccionada);
         $this->view->volverlocation();        
     }
+
+    function agregarMarca(){
+        $this->checkLoggedIn();
+        $marca=$_POST['marca'];
+        $descripcion=$_POST['descripcion'];
+        $this->model->addMarca($marca, $descripcion);
+        $this->view->volverlocation();
+    }
+
+
 
     //Borra pantalon de la lista completa
     function borrarPantalon($params = null){
         $this->checkLoggedIn();
         $id_borrar= $params[':ID'];
         $this->model->deletPantalon($id_borrar);        
-        $this->view->volverlocation();        
+        $this->view->volverlocation();   
     }
 
     //Tanto showFromEdit como Edit sirven para poder editar el elemento seleccionado
@@ -101,5 +115,25 @@ class Controller{
         $this->view->volverlocation();
     }  
 
-    
+    function showFormEditMarca($params){
+        $this->checkLoggedIn();
+        $id_editarMarca= $params[':ID'];
+        $datoMarca = $this->model->getByEditMarca($id_editarMarca);
+        $this->view->mostrarForumarioEditarMarca($datoMarca);
+    }
+
+    function borrarMarca($params = null){
+        $this->checkLoggedIn();
+        $id_borrarMarca= $params[':ID'];
+        $this->model->deletMarca($id_borrarMarca);        
+        $this->view->volverlocation(); 
+    }
+    function editMarca(){
+        $this->checkLoggedIn();
+        $dato =$_POST['id_edit'];
+        $marca_editar=$_POST['marca_edit'];
+        $descrip_editar=$_POST['descripcion_edit'];
+        $this->model->editarMarca($marca_editar, $descrip_editar, $dato); 
+        $this->view->volverlocation();  
+    }
 }
