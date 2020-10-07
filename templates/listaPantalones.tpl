@@ -13,8 +13,10 @@
                         <td>Tela</td>
                         <td>Precio</td>
                         <td>marca</td>
+                        {if isset($nombre)}
                         <td>Editar</td>
                         <td>Borrar</td>
+                        {/if}
                     </tr>
                 </thead>
                 <tbody>
@@ -27,8 +29,10 @@
                         <td>{$dato->tela}</td>
                         <td>{$dato->precio}</td>
                         <td>{$dato->marca}</td>
-                        <td><a  href="edit/{$dato->id_pantalones}"><img src="./img/icono-editar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        {if isset($nombre)}
+                        <td><a class="btn-editar"  href="edit/{$dato->id_pantalones}">Editar</a></td>
                         <td><a href="borrar/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        {/if}
                     </tr>
                     {/foreach}
 
@@ -44,8 +48,10 @@
                         
                         <td>marca</td>
                         <td>Descripcion</td>
+                        {if isset($nombre)}
                         <td>Editar</td>
                         <td>Borrar</td>
+                        {/if}
                     </tr>
                 </thead>
                 <tbody>
@@ -53,8 +59,10 @@
                     <tr>
                         <td>{$dato->marca}</td>
                         <td>{$dato->descripcion}</td>
-                        <td><a  href="editMarca/{$dato->id_marca}"><img src="./img/icono-editar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        {if isset($nombre)}
+                        <td><a class="btn-editar"  href="editMarca/{$dato->id_marca}">Editar</td>
                         <td><a  href="borrarMarca/{$dato->id_marca}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        {/if}
                     </tr>
                     {/foreach}
 

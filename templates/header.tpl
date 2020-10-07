@@ -15,8 +15,10 @@
         <h3 class="sub-title">Pantalones</h2>
     </header>
     <div style="text-align: right;">
-        
-        <a class="btn-borrar" href="logout">log out</a>    
+    {if isset($nombre)}
+    <p>Hola - {$nombre}</p>
+    <a class="btn-borrar" href="logout">log out</a>
+    {/if}
     </div>
 
 </div>
@@ -28,7 +30,7 @@
                <li><a href="home">Home</a></li>
                <li><a href="ropa">Nuestros pantalones</a></li>
                <li><a href="tabla_de_pantalones">Lista de pantalones</a></li>               
-               <li class="boton"><a href="registrar">Registrese</a></li>
+               <li class="boton"><a href="login">log in</a></li>
            </ul>      
         </div>  
     </nav>

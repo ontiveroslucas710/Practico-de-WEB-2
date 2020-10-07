@@ -10,7 +10,7 @@
     
     
     $r->addRoute("verificaForm", "POST", "UserController", "verificaForm");   
-    $r->addRoute("registrar", "GET", "UserController", "mostrarRegistro");
+    $r->addRoute("login", "GET", "UserController", "mostrarRegistro");
     $r->addRoute("logout", "GET", "UserController", "logout");
 
 

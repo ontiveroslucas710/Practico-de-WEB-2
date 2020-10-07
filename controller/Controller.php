@@ -12,7 +12,9 @@ class Controller{
     }
     
     private function checkLoggedIn(){
-        session_start();
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }
         if(!isset($_SESSION["USERNAME"])){
             $this->view->irARegistrar();
             die();

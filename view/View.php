@@ -7,11 +7,17 @@ class View {
 
     function __construct(){
         $this->smarty = new Smarty();
+        
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }               
+        if(isset($_SESSION['USERNAME'])){
+            $this->smarty->assign('nombre', $_SESSION['USERNAME']);
+        }
     }
     
     //####### FUNCIONES PRINCIPALES DEL VIEW ########
-    function nuestraHome($conectado = ""){
-        $this->smarty->assign('conectado', $conectado);
+    function nuestraHome(){      
         $this->smarty->display('templates/home.tpl');
     }
 
@@ -61,7 +67,7 @@ class View {
     }
 
     function irARegistrar(){
-        header("Location: ".BASE_URL."registrar");
+        header("Location: ".BASE_URL."login");
     }
    
  

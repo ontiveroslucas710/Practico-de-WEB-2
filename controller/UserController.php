@@ -9,8 +9,7 @@ class UserController{
     function __construct(){
         $this->Userview= new UserView();
         $this->Usermodel= new UserModel();
-    }
-   
+    }   
 
      function mostrarRegistro(){
         $this->Userview->nuestroRegistro();
@@ -26,7 +25,7 @@ class UserController{
                 if(password_verify($contraseña, $BDusuario->password)){
                     session_start();
                     $_SESSION['USERNAME']= $BDusuario->nombre;
-                    $this->Userview->volverALaHome("estas conectado");                    
+                    $this->Userview->volverALaHome();                    
                 }else{
                     $this->Userview->nuestroRegistro("Contraseña Incorrecta");                   
                 }
