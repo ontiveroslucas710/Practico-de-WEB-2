@@ -1,5 +1,5 @@
 <?php
-    require_once 'controller/Controller.php';
+    require_once 'controller/PantalonController.php';
     require_once 'controller/UserController.php';
     require_once 'RouterClass.php';
     
@@ -14,27 +14,27 @@
     $r->addRoute("logout", "GET", "UserController", "logout");
 
 
-    $r->addRoute("home", "GET", "Controller", "home");
-    $r->addRoute("ropa", "GET", "Controller", "MostrarPantalones");
-    $r->addRoute("tabla_de_pantalones", "GET", "Controller", "mostrarTabla");
+    $r->addRoute("home", "GET", "PantalonController", "home");
+    $r->addRoute("ropa", "GET", "PantalonController", "MostrarPantalones");
+    $r->addRoute("tabla_de_pantalones", "GET", "PantalonController", "mostrarTabla");
 
     //ACCION PARA FILTRAR MARCA
-    $r->addRoute("filtro/:ID", "GET", "Controller", "filtrar");
-    $r->addRoute("verMas/:ID", "GET", "Controller", "verMas");
+    $r->addRoute("filtro/:ID", "GET", "PantalonController", "filtrar");
+    $r->addRoute("verMas/:ID", "GET", "PantalonController", "verMas");
 
     //acciones de la tabla, agregar, borrar, editarX 2 
-    $r->addRoute("agregar", "POST", "Controller", "insertPantalon");
-    $r->addRoute("agregarMarca", "POST", "Controller", "agregarMarca");
-    $r->addRoute("borrar/:ID", "GET", "Controller", "borrarPantalon");
-    $r->addRoute("edit/:ID", "GET", "Controller", "showFormEdit");
-    $r->addRoute("edit", "POST", "Controller", "Edit"); 
+    $r->addRoute("agregar", "POST", "PantalonController", "insertPantalon");
+    $r->addRoute("agregarMarca", "POST", "PantalonController", "agregarMarca");
+    $r->addRoute("borrar/:ID", "GET", "PantalonController", "borrarPantalon");
+    $r->addRoute("edit/:ID", "GET", "PantalonController", "showFormEdit");
+    $r->addRoute("edit", "POST", "PantalonController", "Edit"); 
 
-    $r->addRoute("borrarMarca/:ID", "GET", "Controller", "borrarMarca");
-    $r->addRoute("editMarca/:ID", "GET", "Controller", "showFormEditMarca"); 
-    $r->addRoute("editMarca", "POST", "Controller", "editMarca"); 
+    $r->addRoute("borrarMarca/:ID", "GET", "PantalonController", "borrarMarca");
+    $r->addRoute("editMarca/:ID", "GET", "PantalonController", "showFormEditMarca"); 
+    $r->addRoute("editMarca", "POST", "PantalonController", "editMarca"); 
    
     //Ruta por defecto.
-    $r->setDefaultRoute("Controller", "home");
+    $r->setDefaultRoute("PantalonController", "home");
 
     //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

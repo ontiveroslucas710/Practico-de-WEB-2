@@ -1,6 +1,6 @@
 <?php
 
-require_once './controller/Controller.php';
+require_once './controller/PantalonController.php';
 require_once './libs/smarty/Smarty.class.php';
 
 class View {
