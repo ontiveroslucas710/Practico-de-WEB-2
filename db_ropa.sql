@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2020 a las 18:17:21
+-- Tiempo de generación: 08-10-2020 a las 23:18:32
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -68,6 +68,27 @@ INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `pr
 (22, 'trabajo', 34, 'azul', 'grues', 2244, 7),
 (23, 'jkjkldjflkj', 233, 'sdd', 'eee', 23, 9);
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `password`) VALUES
+(2, 'lucas123456', '$2y$10$WU7LhV0QAH4bcLHCq/4WBu1oaoi9O0G1Nr4FI6Oi7A7ivNxQjLwtm'),
+(3, 'luis123', '$2y$10$T9/Y7kZUX4Hb4eS7dW1xM.uz5kFnxKxU1T1xtbbUNk4/dnZhNloW2'),
+(4, 'otro12345', '$2y$10$ykNXXPytKQJfeFZEOPLT4OBg/c2NfIIn9I54mqiRe9lNMqR76ezmW');
+
 --
 -- Índices para tablas volcadas
 --
@@ -87,6 +108,12 @@ ALTER TABLE `pantalon`
   ADD KEY `id_marca` (`id_marca`);
 
 --
+-- Indices de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -101,6 +128,12 @@ ALTER TABLE `marca`
 --
 ALTER TABLE `pantalon`
   MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
