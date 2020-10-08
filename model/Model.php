@@ -26,7 +26,7 @@ class Model {
 
     //Obtengo el ID de los pantalones
     function getById($id){
-        $query = $this->db->prepare("SELECT * FROM pantalon WHERE id_pantalones = ?");
+        $query = $this->db->prepare('SELECT * FROM pantalon JOIN marca ON (pantalon.id_marca=marca.id_marca) AND pantalon.id_pantalones = ?');
         $query->execute(array($id));
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;

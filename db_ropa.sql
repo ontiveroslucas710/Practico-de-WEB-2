@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-10-2020 a las 15:32:23
+-- Tiempo de generación: 08-10-2020 a las 18:17:21
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `marca` (
   `id_marca` int(11) NOT NULL,
-  `descripcionnn` varchar(100) NOT NULL,
+  `descripcion` varchar(100) NOT NULL,
   `marca` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -37,9 +37,11 @@ CREATE TABLE `marca` (
 -- Volcado de datos para la tabla `marca`
 --
 
-INSERT INTO `marca` (`id_marca`, `descripcionnn`, `marca`) VALUES
-(3, 'buenisima', 'nike'),
-(4, 'muy mala', 'adidas');
+INSERT INTO `marca` (`id_marca`, `descripcion`, `marca`) VALUES
+(3, 'es mucho mejor de lo que esperaba', 'nike'),
+(6, 'para el campo', 'pampero'),
+(7, 'para hacer deporte', 'wilson'),
+(9, 'copado', 'lenovo');
 
 -- --------------------------------------------------------
 
@@ -62,8 +64,9 @@ CREATE TABLE `pantalon` (
 --
 
 INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `precio`, `id_marca`) VALUES
-(17, 'corto', 34, 'rojo', 'algodon', 60, 3),
-(18, 'largo', 4, 'gris', 'fina', 80, 4);
+(17, 'corto de mas', 34, 'rojo', 'algodon', 60, 7),
+(22, 'trabajo', 34, 'azul', 'grues', 2244, 7),
+(23, 'jkjkldjflkj', 233, 'sdd', 'eee', 23, 9);
 
 --
 -- Índices para tablas volcadas
@@ -91,13 +94,13 @@ ALTER TABLE `pantalon`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `pantalon`
 --
 ALTER TABLE `pantalon`
-  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

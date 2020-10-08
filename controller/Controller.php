@@ -93,7 +93,8 @@ class Controller{
         $this->checkLoggedIn();
         $id_editar= $params[':ID'];
         $dato = $this->model->getById($id_editar);
-        $this->view->mostrarFormularioEditar($dato);
+        $datomarca = $this->model->getMarca();
+        $this->view->mostrarFormularioEditar($dato,$datomarca);
     }
 
     function Edit(){
@@ -104,8 +105,13 @@ class Controller{
         $color_editar=$_POST['color_edit'];
         $tela_editar=$_POST['tela_edit'];
         $precio_editar=$_POST['precio_edit'];
-        $marca_editar=$_POST['marca_edit'];
-        $this->model->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marca_editar, $dato);        
+        $marca=$_POST['marca_edit'];
+        for ($i=0;$i<count($marca);$i++)  {
+            $marcaSeleccionada = $marca[$i];
+         }
+        
+        $this->model->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marcaSeleccionada, $dato);        
+        
         $this->view->volverlocation();
     }  
 
