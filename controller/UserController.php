@@ -3,43 +3,42 @@ require_once './model/UserModel.php';
 require_once './view/UserView.php';
 
 class UserController{
-    private $Usermodel;
-    private $Userview;
+    private $model;
+    private $view;
 
     function __construct(){
-        $this->Userview= new UserView();
-        $this->Usermodel= new UserModel();
+        $this->view= new UserView();
+        $this->model= new UserModel();
     }   
 
      function mostrarRegistro(){
-        $this->Userview->nuestroRegistro();
+        $this->view->nuestroRegistro();
     }
 
     function verificaForm(){
-        $nombre= $_POST['usuario'];        
+        $nombre= $_POST['usuario'];
         $contraseña= $_POST['contraseña'];  
         
         if(isset($nombre)){
-            $BDusuario= $this->Usermodel->getusuario($nombre);
+            $BDusuario= $this->model->getusuario($nombre);
             if(isset($BDusuario) && $BDusuario){                
                 if(password_verify($contraseña, $BDusuario->password)){
                     session_start();
                     $_SESSION['USERNAME']= $BDusuario->nombre;
-                    $this->Userview->volverALaHome();                    
+                    $this->view->volverALaHome();                    
                 }else{
-                    $this->Userview->nuestroRegistro("Contraseña Incorrecta");                   
+                    $this->view->nuestroRegistro("Contraseña Incorrecta");                   
                 }
             }else{
-                $this->Userview->nuestroRegistro("el usuario no existe");             
+                $this->view->nuestroRegistro("el usuario no existe");             
             }
         }     
-    
     }
 
     function logout(){
         session_start();
         session_destroy();
-        $this->Userview->volverARegistro();
+        $this->view->volverARegistro();
     }
     
 }

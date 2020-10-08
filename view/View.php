@@ -35,8 +35,6 @@ class View {
         $this->smarty->display('templates/listaPantalones.tpl');     
     }
 
-   
-
     //###### Funciones especiales ####
 
     function filtroParaMarcas($dato){ 
@@ -49,8 +47,6 @@ class View {
         $this->smarty->display('templates/filtroCompleto.tpl');
     }
 
-
-    
     function mostrarFormularioEditar($dato){
         $this->smarty->assign('pantalon', $dato);
         $this->smarty->display('templates/formularioEditar.tpl');

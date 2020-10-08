@@ -75,7 +75,9 @@
 
     <div class="box-agregar">
         <div>
+            {if isset($nombre)}
             <p class="texto">Agregar producto</p>
+
             <form action="agregar" method="POST">
 
                 <input type="text" name="nombre" placeholder="Ingrese Nombre" required>
@@ -90,18 +92,20 @@
                 </select>
                 <input type="submit" value="agregar">
             </form>
-
+            {/if}
         </div>
-
 
         <div class="separar">
             <div class="separar1">
+            {if isset($nombre)}
                 <p class="texto">Agregar marca Y descripcion</p>
+
                 <form action="agregarMarca" method="POST">
                     <input type="text" name="marca" placeholder="Ingrese marca" required>
                     <textarea  name="descripcion" placeholder="Ingrese descripcion" required></textarea>
                     <input type="submit" value="agregar">
                 </form>
+            {/if}
             </div>
 
         </div>

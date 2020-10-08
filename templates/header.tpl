@@ -14,11 +14,11 @@
         <h1>My Label ®</h1>
         <h3 class="sub-title">Pantalones</h2>
     </header>
+
     <div style="text-align: right;">
-    {if isset($nombre)}
-    <p>Hola - {$nombre}</p>
-    <a class="btn-borrar" href="logout">log out</a>
-    {/if}
+        {if isset($nombre)}
+            <p>Hola - {$nombre}</p>
+        {/if}
     </div>
 
 </div>
@@ -29,8 +29,14 @@
           <ul class="navigation">
                <li><a href="home">Home</a></li>
                <li><a href="ropa">Nuestros pantalones</a></li>
-               <li><a href="tabla_de_pantalones">Lista de pantalones</a></li>               
-               <li class="boton"><a href="login">log in</a></li>
+               <li><a href="tabla_de_pantalones">Lista de pantalones</a></li>
+
+                {if isset($nombre)}
+                    <li><a href="logout">log out</a></li> {*aca borre class="btn-borrar" para que quede igual que el nav*}
+                {/if}
+                {if !isset($nombre)}
+                    <li><a href="login">log in</a></li> {*aca borre class="boton" para que quede igual que el nav*}
+                {/if}
            </ul>      
         </div>  
     </nav>

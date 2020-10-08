@@ -19,9 +19,7 @@ class Controller{
             $this->view->irARegistrar();
             die();
         }
-
     }
-
 
     //####### FUNCIONES PARA MOSTRAR DIRECTAMENTE SIN GENERAR ACCIONES ##########
     //funcion para ver home
@@ -29,25 +27,19 @@ class Controller{
         $this->view->nuestraHome();
     }
     
-    
     //funcion para mostrar nuestros pantalones y a su vez genera la lista de marca
     function MostrarPantalones(){
         $dato=$this->model->getMarca();
         $this->view->ListaPantalonesPorMarca($dato);
     }
     
-
     //funcion para mostrar Lista de Pantalones y la tabla completa
     function mostrarTabla(){      
         $dato=$this->model->getPantalones();
         $datoMarca = $this->model->getMarca();
         $this->view->listaDePantalones($dato, $datoMarca);            
     }    
-
-
    
-
-
     //############## FUNCIONES ESPECIALES ##########
     //Filtra las marcas en nuestros pantalones
     function filtrar($params){
