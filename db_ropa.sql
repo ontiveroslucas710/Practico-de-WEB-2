@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2020 a las 23:18:32
+-- Tiempo de generación: 14-10-2020 a las 21:41:41
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -38,10 +38,19 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`id_marca`, `descripcion`, `marca`) VALUES
-(3, 'es mucho mejor de lo que esperaba', 'nike'),
-(6, 'para el campo', 'pampero'),
-(7, 'para hacer deporte', 'wilson'),
-(9, 'copado', 'lenovo');
+(3, 'descripcion de narrow', 'NARROW'),
+(6, 'para el campo', 'PAMPERO'),
+(7, 'descripcion de Kloster', 'KLOSTER'),
+(9, 'descripcion de vanderholl', 'VANDERHOLL'),
+(10, 'descripcion de Huapi', 'HUAPI'),
+(11, 'descripcion de levi´s', 'LEVI´S'),
+(12, 'descripcion de bearcliff', 'BEARCLIFF'),
+(13, 'descripcion de basement', 'BASEMENT'),
+(14, 'descripcion de americanino', 'AMERICANINO'),
+(15, 'descripcion de mossimo', 'MOSSIMO'),
+(16, 'descripcion de volcom', 'VOLCOM'),
+(17, 'descripcion de brooksfield', 'BROOKSFIELD'),
+(18, 'descripcion de Roberto Cavalli', 'ROBERTO CAVALLI');
 
 -- --------------------------------------------------------
 
@@ -64,9 +73,15 @@ CREATE TABLE `pantalon` (
 --
 
 INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `precio`, `id_marca`) VALUES
-(17, 'corto de mas', 34, 'rojo', 'algodon', 60, 7),
-(22, 'trabajo', 34, 'azul', 'grues', 2244, 7),
-(23, 'jkjkldjflkj', 233, 'sdd', 'eee', 23, 9);
+(17, 'jeans', 40, 'azul claro', 'algodon', 3490, 3),
+(22, 'Rally', 35, 'azul oscuro', 'estilizada', 2990, 7),
+(23, 'jean canno', 42, 'gris', 'denim', 2800, 9),
+(24, 'Biolish', 43, 'celeste', 'mezclilla', 2900, 7),
+(30, 'pantalón chino con cinturón', 43, 'crema', 'algodon', 5900, 13),
+(31, 'balcarce', 38, 'beige', 'algodón ', 2300, 6),
+(33, 'jeans urbano', 40, 'negro', 'algodon', 3500, 17),
+(36, 'annanaan', 17, 'firtiu', 'lqiwd', 1, 15),
+(37, 'nuevo', 10, 'ds', 'szzz', 545, 11);
 
 -- --------------------------------------------------------
 
@@ -121,13 +136,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `pantalon`
 --
 ALTER TABLE `pantalon`
-  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
