@@ -2,12 +2,17 @@
 
 {foreach from=$pantalon item=item }
 <form action="edit" method='POST'>
+    <label for="">nombre: </label>
     <input type="text" name="nombre_edit" value="{$item->nombre}" required>
+    <label for="">talle: </label>
     <input type="number" name="talle_edit" value="{$item->talle}" required>
+    <label for="">color: </label>
     <input type="text" name="color_edit" value="{$item->color}" required>
+    <label for="">tela: </label>
     <input type="text" name="tela_edit" value="{$item->tela}" required>
+    <label for="">precio: </label>
     <input type="number" name="precio_edit" value="{$item->precio}" required>
-    {*<input type="text" name="marca_edit" value="{$item->marca}" required>*}
+    
     <input type="hidden" name="id" value="{$item->id_pantalones}">
     
 

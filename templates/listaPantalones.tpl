@@ -41,7 +41,7 @@
             </tbody>
             </table>
             <br>
-                <h2>Lista de marca y descripcion</h2>
+                <h2>{$titulo2}</h2>
             <table>
                 <thead>
                     <tr>
