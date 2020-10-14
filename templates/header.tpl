@@ -32,10 +32,10 @@
                <li><a href="tabla_de_pantalones">Lista de pantalones</a></li>
 
                 {if isset($nombre)}
-                    <li><a href="logout">log out</a></li> {*aca borre class="btn-borrar" para que quede igual que el nav*}
+                    <li><a class="btn-borrar" href="logout">log out</a></li>
                 {/if}
                 {if !isset($nombre)}
-                    <li><a href="login">log in</a></li> {*aca borre class="boton" para que quede igual que el nav*}
+                    <li><a href="login">log in</a></li> 
                 {/if}
            </ul>      
         </div>  
