@@ -63,10 +63,12 @@ class PantalonController{
         $tela=$_POST['tela'];
         $precio=$_POST['precio'];
         $marcas=$_POST['marca'];
-        for ($i=0;$i<count($marcas);$i++)  {
-           $marcaSeleccionada = $marcas[$i];
-        }
-        $this->model->addPpantalon($nombre,$talle,$color,$tela,$precio,$marcaSeleccionada);
+
+        /*for ($i=0;$i<count($marcas);$i++)  {
+            $marcaSeleccionada = $marcas[$i];
+        }*/
+        
+        $this->model->addPpantalon($nombre,$talle,$color,$tela,$precio,$marcas);
         $this->view->volverlocation();        
     }
 
@@ -106,11 +108,12 @@ class PantalonController{
         $tela_editar=$_POST['tela_edit'];
         $precio_editar=$_POST['precio_edit'];
         $marca=$_POST['marca_edit'];
-        for ($i=0;$i<count($marca);$i++)  {
-            $marcaSeleccionada = $marca[$i];
-         }
         
-        $this->model->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marcaSeleccionada, $dato);        
+        /*for ($i=0;$i<count($marca);$i++)  {
+            $marcaSeleccionada = $marca[$i];
+         }*/
+        
+        $this->model->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marca, $dato);        
         
         $this->view->volverlocation();
     }  
