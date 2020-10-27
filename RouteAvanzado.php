@@ -27,7 +27,7 @@
     $r->addRoute("agregar", "POST", "modifierPantalonController", "insertPantalon");
     $r->addRoute("agregarMarca", "POST", "modifierPantalonController", "agregarMarca");
     $r->addRoute("borrar/:ID", "GET", "modifierPantalonController", "borrarPantalon");
-    $r->addRoute("edit/:ID", "GET", "PantalonController", "showFormEdit");
+    $r->addRoute("edit/:ID", "GET", "modifierPantalonController", "showFormEdit");
     $r->addRoute("edit", "POST", "modifierPantalonController", "Edit"); 
     $r->addRoute("borrarMarca/:ID", "GET", "modifierPantalonController", "borrarMarca");
     $r->addRoute("editMarca", "POST", "modifierPantalonController", "editMarca"); 
