@@ -1,5 +1,6 @@
 <?php
-require_once './model/Model.php';
+require_once './model/ModelModifierPantalon.php';
+require_once './model/ModelModifierMarca.php';
 require_once './model/ModelPantalones.php';
 require_once './view/View.php';
 
@@ -9,7 +10,8 @@ class modifierPantalonController{
 
     function __construct(){
         $this->view= new View();
-        $this->model= new Model();
+        $this->modelModifierPantalon = new ModelModifierPantalon();
+        $this->modelModifierMarca = new ModelModifierMarca;
     }
 
     private function checkLoggedIn(){
@@ -31,23 +33,15 @@ class modifierPantalonController{
          $tela=$_POST['tela'];
          $precio=$_POST['precio'];
          $marcas=$_POST['marca'];        
-         $this->model->addPpantalon($nombre,$talle,$color,$tela,$precio,$marcas);
+         $this->modelModifierPantalon->addPpantalon($nombre,$talle,$color,$tela,$precio,$marcas);
          $this->view->volverlocation();        
      }    
-
-    function agregarMarca(){
-        $this->checkLoggedIn();
-        $marca=$_POST['marca'];
-        $descripcion=$_POST['descripcion'];
-        $this->model->addMarca($marca, $descripcion);
-        $this->view->volverlocation();
-    }
 
     //Borra pantalon de la lista completa
     function borrarPantalon($params = null){
         $this->checkLoggedIn();
         $id_borrar= $params[':ID'];
-        $this->model->deletPantalon($id_borrar);        
+        $this->modelModifierPantalon->deletPantalon($id_borrar);        
         $this->view->volverlocation();   
     }  
 
@@ -60,14 +54,23 @@ class modifierPantalonController{
         $tela_editar=$_POST['tela_edit'];
         $precio_editar=$_POST['precio_edit'];
         $marca=$_POST['marca_edit'];        
-        $this->model->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marca, $dato);         
+        $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marca, $dato);         
         $this->view->volverlocation();
     }  
 
+    
+    function agregarMarca(){
+        $this->checkLoggedIn();
+        $marca=$_POST['marca'];
+        $descripcion=$_POST['descripcion'];
+        $this->modelModifierMarca->addMarca($marca, $descripcion);
+        $this->view->volverlocation();
+    }
+    
     function borrarMarca($params = null){
         $this->checkLoggedIn();
         $id_borrarMarca= $params[':ID'];
-        $this->model->deletMarca($id_borrarMarca);        
+        $this->modelModifierMarca->deletMarca($id_borrarMarca);        
         $this->view->volverlocation(); 
     }
     
@@ -76,7 +79,7 @@ class modifierPantalonController{
         $dato =$_POST['id_edit'];
         $marca_editar=$_POST['marca_edit'];
         $descrip_editar=$_POST['descripcion_edit'];
-        $this->model->editarMarca($marca_editar, $descrip_editar, $dato); 
+        $this->modelModifierMarca->editarMarca($marca_editar, $descrip_editar, $dato); 
         $this->view->volverlocation();  
     }
 }
