@@ -47,7 +47,7 @@ class View {
         $this->smarty->display('templates/filtroCompleto.tpl');
     }
 
-    function mostrarFormularioEditar($dato,$marca){
+    function mostrarFormularioEditarPantalon($dato,$marca){
         $this->smarty->assign('pantalon', $dato);
         $this->smarty->assign('marca', $marca);
         $this->smarty->display('templates/formularioEditar.tpl');

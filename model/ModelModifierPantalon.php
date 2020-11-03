@@ -1,5 +1,4 @@
 <?php
-require_once './controller/PantalonController.php';
 require_once './controller/modifierPantalonController.php';
 
 class ModelModifierPantalon {

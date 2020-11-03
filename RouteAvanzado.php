@@ -22,14 +22,18 @@
     $r->addRoute("filtro/:ID", "GET", "PantalonController", "filtrar");
     $r->addRoute("verMas/:ID", "GET", "PantalonController", "verMas");
     
-    //acciones de la tabla, agregar, borrar, editarX 2 
-    $r->addRoute("editMarca/:ID", "GET", "PantalonController", "showFormEditMarca"); 
-    $r->addRoute("agregar", "POST", "modifierPantalonController", "insertPantalon");
-    $r->addRoute("agregarMarca", "POST", "modifierPantalonController", "agregarMarca");
-    $r->addRoute("borrar/:ID", "GET", "modifierPantalonController", "borrarPantalon");
-    $r->addRoute("edit/:ID", "GET", "modifierPantalonController", "showFormEdit");
-    $r->addRoute("edit", "POST", "modifierPantalonController", "Edit"); 
+    //acciones de la tabla, agregar, borrar y editar Marca
+    $r->addRoute("editMarca/:ID", "GET", "PantalonController", "showFormEditMarca");
     $r->addRoute("borrarMarca/:ID", "GET", "modifierPantalonController", "borrarMarca");
+    $r->addRoute("agregarMarca", "POST", "modifierPantalonController", "agregarMarca");
+
+    //acciones de la tabla, agregar, borrar y editar Pantalon
+    $r->addRoute("editPantalon/:ID", "GET", "PantalonController", "showFormEditPantalon");
+    $r->addRoute("borrarPantalon/:ID", "GET", "modifierPantalonController", "borrarPantalon");
+    $r->addRoute("agregarPantalon", "POST", "modifierPantalonController", "insertPantalon");
+
+    //formularios
+    $r->addRoute("editPantalon", "POST", "modifierPantalonController", "Edit"); 
     $r->addRoute("editMarca", "POST", "modifierPantalonController", "editMarca"); 
    
     //Ruta por defecto.

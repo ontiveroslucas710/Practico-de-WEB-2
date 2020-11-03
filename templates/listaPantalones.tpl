@@ -30,8 +30,8 @@
                         <td>{$dato->precio}</td>
                         <td>{$dato->marca}</td>
                         {if isset($nombre)}
-                        <td><a class="btn-editar"  href="edit/{$dato->id_pantalones}">Editar</a></td>
-                        <td><a href="borrar/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        <td><a class="btn-editar"  href="editPantalon/{$dato->id_pantalones}">Editar</a></td>
+                        <td><a href="borrarPantalon/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
                         {/if}
                     </tr>
                     {/foreach}
@@ -78,7 +78,7 @@
             {if isset($nombre)}
             <p class="texto">Agregar producto</p>
 
-            <form action="agregar" method="POST">
+            <form action="agregarPantalon" method="POST">
 
                 <input type="text" name="nombre" placeholder="Ingrese Nombre" required>
                 <input type="number" name="talle" placeholder="Ingrese Talle" required>

@@ -1,5 +1,4 @@
 <?php
-require_once './model/ModelModifierPantalon.php';
 require_once './model/ModelMarca.php';
 require_once './model/ModelPantalones.php';
 require_once './view/View.php';
@@ -11,7 +10,6 @@ class PantalonController{
 
     function __construct(){
         $this->view= new View();
-        $this->model= new ModelModifierPantalon();
         $this->modelMarca= new ModelMarca();
         $this->ModelPantalones= new ModelPantalones();
     }
@@ -42,12 +40,12 @@ class PantalonController{
         $this->view->listaDePantalones($dato, $datoMarca);            
     }    
      //Tanto showFromEdit como Edit sirven para poder editar el elemento seleccionado
-     function showFormEdit($params){
+     function showFormEditPantalon($params){
         $this->checkLoggedIn();
         $id_editar= $params[':ID'];
         $dato = $this->ModelPantalones->getById($id_editar);
         $datomarca = $this->modelMarca->getMarca();
-        $this->view->mostrarFormularioEditar($dato,$datomarca);
+        $this->view->mostrarFormularioEditarPantalon($dato,$datomarca);
     }
 
     function showFormEditMarca($params){

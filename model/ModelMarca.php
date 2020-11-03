@@ -6,8 +6,8 @@ class ModelMarca {
     function __construct(){
         $this->db= new PDO('mysql:host=localhost;'.'dbname=db_ropa;charset=utf8', 'root', '');        
     }
-//obtengo solo las marcas
-function getMarca(){
+    //obtengo solo las marcas
+    function getMarca(){
     $query = $this->db->prepare('SELECT * FROM marca');
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_OBJ);

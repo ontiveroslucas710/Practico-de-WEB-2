@@ -1,7 +1,6 @@
 <?php
 require_once './model/ModelModifierPantalon.php';
 require_once './model/ModelModifierMarca.php';
-require_once './model/ModelPantalones.php';
 require_once './view/View.php';
 
 class modifierPantalonController{

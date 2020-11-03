@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
 {foreach from=$pantalon item=item }
-<form action="edit" method='POST'>
+<form action="editPantalon" method='POST'>
     <label for="">nombre: </label>
     <input type="text" name="nombre_edit" value="{$item->nombre}" required>
     <label for="">talle: </label>
