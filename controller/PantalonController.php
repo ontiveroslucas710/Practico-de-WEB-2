@@ -6,6 +6,7 @@ require_once './view/View.php';
 class PantalonController{
     private $model;
     private $ModelPantalones;
+    private $modelMarca;
     private $view;
 
     function __construct(){
