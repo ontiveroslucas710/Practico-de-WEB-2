@@ -17,7 +17,7 @@ class apiPantalonController{
 
     public function getPantalones(){
         $dato=$this->ModelPantalones->getPantalones();
-        $this->apiView->response($dato);
+        $this->apiView->response($dato, 200);
     }  
 
 
