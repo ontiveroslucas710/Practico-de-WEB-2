@@ -26,9 +26,14 @@ class UserController{
             $BDusuario= $this->model->getusuario($nombre);
             if(isset($BDusuario) && $BDusuario){                
                 if(password_verify($contraseña, $BDusuario->password)){
-                    session_start();
-                    $_SESSION['USERNAME']= $BDusuario->nombre;
-                    $this->view->volverALaHome();                    
+                    if($BDusuario->administrador == 1){
+                        session_start();
+                        $_SESSION['USERNAME']= $BDusuario->nombre;
+                        $this->view->volverALaHome();                    
+                    }else{
+                        $this->view->formSesion("No eres un Administrador");
+                        $this->view->volverALaHome();
+                    }
                 }else{
                     $this->view->formSesion("Contraseña Incorrecta");                   
                 }
