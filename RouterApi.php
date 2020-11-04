@@ -7,7 +7,7 @@ $router = new Router();
 
 $router->addRoute("ropa", "GET", "apiPantalonController", "getPantalones");
 $router->addRoute("ropa/:ID", "GET", "apiPantalonController", "getPantalonesID");
-
+$router->addRoute("agregarComentarioIngresado", "POST", "apiPantalonController", "agregarComentarioIngresadoPorUsuario");
 
 
  $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 

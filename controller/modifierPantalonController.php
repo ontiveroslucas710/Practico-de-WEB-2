@@ -22,6 +22,15 @@ class modifierPantalonController{
             die();
         }
     }
+    private function checkLoggenInUsuarioComun(){
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }
+        if(!isset($_SESSION["USERNAME_usuario"])){
+            $this->view->irARegistrar();
+            die();
+        }
+    }
 
     //Agrega pantalones en la lista completa
     function insertPantalon(){
@@ -56,7 +65,6 @@ class modifierPantalonController{
         $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marca, $dato);         
         $this->view->volverlocation();
     }  
-
     
     function agregarMarca(){
         $this->checkLoggedIn();

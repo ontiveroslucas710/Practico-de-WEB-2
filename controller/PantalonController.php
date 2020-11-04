@@ -19,11 +19,22 @@ class PantalonController{
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }
-        if(!isset($_SESSION["USERNAME"])){
+        if(!isset($_SESSION["USERNAME_admin"])){
             $this->view->irARegistrar();
             die();
         }
     }
+
+    private function checkLoggenInUsuarioComun(){
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }
+        if(!isset($_SESSION["USERNAME_usuario"])){
+            $this->view->irARegistrar();
+            die();
+        }
+    }
+    
     //####### FUNCIONES PARA MOSTRAR DIRECTAMENTE SIN GENERAR ACCIONES ##########
     //funcion para ver home
     function home(){
@@ -48,6 +59,15 @@ class PantalonController{
         $datomarca = $this->modelMarca->getMarca();
         $this->view->mostrarFormularioEditarPantalon($dato,$datomarca);
     }
+
+
+    function addComentario($params = null){
+        $this->checkLoggenInUsuarioComun();
+        $id_comentario = $params[':ID'];
+        $dato = $this->ModelPantalones->getById($id_comentario);
+        $this->view->mostrarFormularioComentario($dato);
+    }
+
 
     function showFormEditMarca($params){
         $this->checkLoggedIn();

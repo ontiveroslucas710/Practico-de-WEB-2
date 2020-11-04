@@ -15,7 +15,7 @@ class apiPantalonController{
         $this->apiView = new apiView();
     }
 
-    public function getPantalones(){
+    /*public function getPantalones(){
         $dato=$this->ModelPantalones->getPantalones();
         $this->apiView->response($dato, 200);
     }  
@@ -23,6 +23,13 @@ class apiPantalonController{
         $id=$params[':ID'];
         $dato=$this->ModelPantalones->getById($id);
         $this->apiView->response($dato, 200);
-    }  
+    }  */
+
+    public function agregarComentarioIngresadoPorUsuario(){
+        $dato = $_POST['id'];
+        $nombre_comentario = $_POST['comentario'];
+        $this->apiView->response($dato, $nombre_comentario, 200);
+
+    }
 
 }

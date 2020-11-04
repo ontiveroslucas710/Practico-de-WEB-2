@@ -11,8 +11,11 @@ class View {
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }               
-        if(isset($_SESSION['USERNAME'])){
-            $this->smarty->assign('nombre', $_SESSION['USERNAME']);
+        if(isset($_SESSION['USERNAME_admin'])){
+            $this->smarty->assign('nombre', $_SESSION['USERNAME_admin']);
+        }
+        if(isset($_SESSION['USERNAME_usuario'])){
+            $this->smarty->assign('nombreUsuario', $_SESSION['USERNAME_usuario']);
         }
     }
     
@@ -58,6 +61,11 @@ class View {
         $this->smarty->display('templates/formularioEditarMarca.tpl');
     }
     
+
+    function mostrarFormularioComentario($dato){
+        $this->smarty->assign('pantalon', $dato);
+        $this->smarty->display('templates/formularioComentario.tpl');
+    }
     
     function volverlocation(){        
         header("Location: ".BASE_URL."tabla_de_pantalones");        

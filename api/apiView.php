@@ -3,10 +3,10 @@ require_once './api/apiPantalonController.php';
 
 class apiView{
 
-    public function response($dato, $status) {
+    public function response($dato, $comentario_agregar, $status) {
         header("Content-Type: application/json");
         header("HTTP/1.1 " . $status . " " . $this->requestStatus($status));
-        echo json_encode($dato);
+        echo json_encode($dato, $comentario_agregar);
     }
 
     private function requestStatus($code){

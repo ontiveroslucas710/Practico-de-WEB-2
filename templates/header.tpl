@@ -19,6 +19,9 @@
         {if isset($nombre)}
             <p>Hola - {$nombre}</p>
         {/if}
+         {if isset($nombreUsuario)}
+            <p>Hola - {$nombreUsuario}</p>
+        {/if}
     </div>
 
 </div>
@@ -31,13 +34,15 @@
                <li><a href="ropa">Nuestros pantalones</a></li>
                <li><a href="tabla_de_pantalones">Lista de pantalones</a></li>
 
-                {if isset($nombre)}
+                {if isset($nombre) || isset($nombreUsuario) }
                     <li><a class="btn-borrar" href="logout">Log out</a></li>
                 {/if}
-                {if !isset($nombre)}
+                
+                {if !isset($nombre) && !isset($nombreUsuario)}
                     <li><a href="sigin">Sig in</a></li>
                     <li><a href="login">Log in</a></li> 
                 {/if}
+                
            </ul>      
         </div>  
     </nav>

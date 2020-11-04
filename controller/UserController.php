@@ -28,11 +28,12 @@ class UserController{
                 if(password_verify($contraseña, $BDusuario->password)){
                     if($BDusuario->administrador == 1){
                         session_start();
-                        $_SESSION['USERNAME']= $BDusuario->nombre;
+                        $_SESSION['USERNAME_admin']= $BDusuario->nombre;
                         $this->view->volverALaHome();                    
-                    }else{
-                        $this->view->formSesion("No eres un Administrador");
-                        $this->view->volverALaHome();
+                    }elseif($BDusuario->administrador == 0){
+                        session_start();
+                        $_SESSION['USERNAME_usuario']= $BDusuario->nombre;
+                        $this->view->volverALaHome();                
                     }
                 }else{
                     $this->view->formSesion("Contraseña Incorrecta");                   
@@ -61,7 +62,7 @@ class UserController{
                 $this->model->cargaUsuario($nombre,$hash);
                 session_start();
                 $usuario=$this->model->getusuario($nombre);
-                    $_SESSION['USERNAME']= $usuario->nombre;
+                    $_SESSION['USERNAME_usuario']= $usuario->nombre;
                     $this->view->formRegistro("Se registro con exito");
                     
                     $this->view->volverALaHome();

@@ -7,15 +7,18 @@
             <table>
                 <thead>
                     <tr>
-                        <td>nombre</td>
-                        <td>Talle</td>
-                        <td>Color</td>
-                        <td>Tela</td>
-                        <td>Precio</td>
-                        <td>marca</td>
+                        <th>nombre</th>
+                        <th>Talle</th>
+                        <th>Color</th>
+                        <th>Tela</th>
+                        <th>Precio</th>
+                        <th>marca</th>
                         {if isset($nombre)}
-                        <td>Editar</td>
-                        <td>Borrar</td>
+                        <th>Editar</th>
+                        <th>Borrar</th>
+                        {/if}
+                        {if isset($nombreUsuario)}
+                        <th>Agregar Comentario</th>
                         {/if}
                     </tr>
                 </thead>
@@ -32,6 +35,9 @@
                         {if isset($nombre)}
                         <td><a class="btn-editar"  href="editPantalon/{$dato->id_pantalones}">Editar</a></td>
                         <td><a href="borrarPantalon/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
+                        {/if}
+                        {if isset($nombreUsuario)}
+                      <td><a class="btn-editar"  href="addComentario/{$dato->id_pantalones}">comentar</a></td>
                         {/if}
                     </tr>
                     {/foreach}
