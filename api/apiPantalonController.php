@@ -19,6 +19,10 @@ class apiPantalonController{
         $dato=$this->ModelPantalones->getPantalones();
         $this->apiView->response($dato, 200);
     }  
-
+    public function getPantalonesID($params=NULL){
+        $id=$params[':ID'];
+        $dato=$this->ModelPantalones->getById($id);
+        $this->apiView->response($dato, 200);
+    }  
 
 }

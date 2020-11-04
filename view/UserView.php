@@ -19,11 +19,14 @@ class UserView {
     //####### FUNCIONES PRINCIPALES DEL LOGIN ########
   
 //si tipea con errores le mando mensaje
-    function nuestroRegistro($mensaje = ""){
+    function formSesion($mensaje = ""){
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('templates/login.tpl');
     }
-    
+    function formRegistro($mensaje = ""){
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('templates/sigin.tpl');
+    }
 //si se conecta lo mando a la home con el nombre en el header
     function volverALaHome(){       
         header("Location: ".BASE_URL."home");

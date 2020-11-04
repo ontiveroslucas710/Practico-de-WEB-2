@@ -1,12 +1,12 @@
-  {include file= 'header.tpl'}
+{include file= 'header.tpl'}
   
   <section class="contactenos">
         <div class="boxformulario"> 
-        <h2>Inicia Sesion</h2>
+        <h2>Registrate</h2>
         <h3>{$mensaje}</h3>
             <div class="formulario">
 
-                <form action="verificaForm" method='POST'>
+                <form action="registr" method='POST'>
                     <div class="formulario-in">
                         <label>Usuario</label>
                         <input type="text" name="usuario" required placeholder="Usuario">
@@ -16,7 +16,7 @@
                         <input type="password" name="contraseña" required  placeholder="contraseña">
                     </div>                    
                     <div>
-                        <input type="submit" id="btn-verificar" value="Ingresar">
+                        <input type="submit" id="btn-verificar" value="registrar">
                     </div>
                 </form>
             </div>
@@ -25,4 +25,4 @@
         </div>
     </section>
 
-    {include file='footer.tpl'}
+{include file='footer.tpl'}

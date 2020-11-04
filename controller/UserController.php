@@ -11,8 +11,11 @@ class UserController{
         $this->model= new UserModel();
     }   
 
-     function mostrarRegistro(){
-        $this->view->nuestroRegistro();
+     function iniciarsesion(){
+        $this->view->formSesion();
+    }
+    function registrarse(){
+        $this->view->formRegistro();
     }
 
     function verificaForm(){
@@ -27,10 +30,10 @@ class UserController{
                     $_SESSION['USERNAME']= $BDusuario->nombre;
                     $this->view->volverALaHome();                    
                 }else{
-                    $this->view->nuestroRegistro("Contraseña Incorrecta");                   
+                    $this->view->formSesion("Contraseña Incorrecta");                   
                 }
             }else{
-                $this->view->nuestroRegistro("el usuario no existe");             
+                $this->view->formSesion("el usuario no existe");             
             }
         }     
     }
@@ -39,6 +42,28 @@ class UserController{
         session_start();
         session_destroy();
         $this->view->volverARegistro();
+    }
+
+    function sigin(){
+        $nombre= $_POST['usuario'];
+        $contraseña= $_POST['contraseña'];
+        if(isset($nombre)){
+            
+            $BDusuario= $this->model->getusuario($nombre);
+            
+            if($BDusuario->nombre != $nombre){
+                $hash = password_hash($contraseña,PASSWORD_DEFAULT);
+                $this->model->cargaUsuario($nombre,$hash);
+                session_start();
+                $usuario=$this->model->getusuario($nombre);
+                    $_SESSION['USERNAME']= $usuario->nombre;
+                    $this->view->formRegistro("Se registro con exito");
+                    
+                    $this->view->volverALaHome();
+            }else{
+                $this->view->formRegistro("El usuario ya existe");
+            }
+        }
     }
     
 }
