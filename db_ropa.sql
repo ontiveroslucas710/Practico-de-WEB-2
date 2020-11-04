@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2020 a las 21:41:41
+-- Tiempo de generación: 04-11-2020 a las 17:14:52
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -38,7 +38,7 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`id_marca`, `descripcion`, `marca`) VALUES
-(3, 'descripcion de narrow', 'NARROW'),
+(3, 'nueva descripcion de narrow', 'NARROW'),
 (6, 'para el campo', 'PAMPERO'),
 (7, 'descripcion de Kloster', 'KLOSTER'),
 (9, 'descripcion de vanderholl', 'VANDERHOLL'),
@@ -50,7 +50,9 @@ INSERT INTO `marca` (`id_marca`, `descripcion`, `marca`) VALUES
 (15, 'descripcion de mossimo', 'MOSSIMO'),
 (16, 'descripcion de volcom', 'VOLCOM'),
 (17, 'descripcion de brooksfield', 'BROOKSFIELD'),
-(18, 'descripcion de Roberto Cavalli', 'ROBERTO CAVALLI');
+(18, 'descripcion de Roberto Cavalli', 'ROBERTO CAVALLI'),
+(20, 'muy buena', 'MUestra'),
+(24, 'PARA IR CERCA', 'CERCANI');
 
 -- --------------------------------------------------------
 
@@ -80,8 +82,7 @@ INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `pr
 (30, 'pantalón chino con cinturón', 43, 'crema', 'algodon', 5900, 13),
 (31, 'balcarce', 38, 'beige', 'algodón ', 2300, 6),
 (33, 'jeans urbano', 40, 'negro', 'algodon', 3500, 17),
-(36, 'annanaan', 17, 'firtiu', 'lqiwd', 1, 15),
-(37, 'nuevo', 10, 'ds', 'szzz', 545, 11);
+(40, 'BERMUDA NUEVA', 62, 'GROW', 'SUVE', 2345, 11);
 
 -- --------------------------------------------------------
 
@@ -92,17 +93,20 @@ INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `pr
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `administrador` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nombre`, `password`) VALUES
-(2, 'lucas123456', '$2y$10$WU7LhV0QAH4bcLHCq/4WBu1oaoi9O0G1Nr4FI6Oi7A7ivNxQjLwtm'),
-(3, 'luis123', '$2y$10$T9/Y7kZUX4Hb4eS7dW1xM.uz5kFnxKxU1T1xtbbUNk4/dnZhNloW2'),
-(4, 'otro12345', '$2y$10$ykNXXPytKQJfeFZEOPLT4OBg/c2NfIIn9I54mqiRe9lNMqR76ezmW');
+INSERT INTO `usuario` (`id`, `nombre`, `password`, `administrador`) VALUES
+(5, 'lucas123', '$2y$10$oTxg6SodRUUZRpcNnOYgaua.tYZ66MlJV.TFzcB33LC9gYEPWR3Ya', 1),
+(8, 'mariano123', '$2y$10$nQTJWkxZfULLNkmBK.pOvOk4pKBiM2Tcaqx2i/9xEf/pjDrArJk0K', 1),
+(9, 'usuario1', '$2y$10$tvd32pOWVMlQ1rEnwk4jHeURIDcpSMep4BEZ/U3eqike8EIkU/6fO', 0),
+(10, 'usuario2', '$2y$10$xEjAb/RkZdQjkqVy1CusaO1qhrjj2bL3uADeej1KnWlAhOeK6n3Nu', 0),
+(11, 'usuario3', '$2y$10$tXAGmZQOtg4GXo2j15NZde0332iRaX2n8rSGSNhoLYyTGH8RlOBRG', 0);
 
 --
 -- Índices para tablas volcadas
@@ -136,19 +140,19 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `pantalon`
 --
 ALTER TABLE `pantalon`
-  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Restricciones para tablas volcadas
