@@ -1,35 +1,44 @@
 <?php
-require_once './model/ModelMarca.php';
-require_once './model/ModelPantalones.php';
+require_once './model/modelComentarios.php';
 require_once './api/apiView.php';
 class apiPantalonController{
 
-    private $model;
-    private $ModelPantalones;
-    private $view;
+    private $modelComentario;
     private $apiView;
 
     function __construct(){
-        $this->modelMarca= new ModelMarca();
-        $this->ModelPantalones= new ModelPantalones();
         $this->apiView = new apiView();
+        $this->modelComentario= new modelComentarios();
     }
 
-    /*public function getPantalones(){
-        $dato=$this->ModelPantalones->getPantalones();
+    public function getComentarios($params = null){
+        $dato=$this->modelComentario->getComentarios();
         $this->apiView->response($dato, 200);
     }  
-    public function getPantalonesID($params=NULL){
-        $id=$params[':ID'];
-        $dato=$this->ModelPantalones->getById($id);
-        $this->apiView->response($dato, 200);
-    }  */
+    
+    public function getComentariosById($params = null){
+        $id_comentario = $params[':ID'];
+        $dato = $this->modelComentario->getComentarioPorId($id_comentario);
 
-    public function agregarComentarioIngresadoPorUsuario(){
-        $dato = $_POST['id'];
-        $nombre_comentario = $_POST['comentario'];
-        $this->apiView->response($dato, $nombre_comentario, 200);
+        if (!empty($dato)) {
+            $this->apiView->response($dato, 200);
+        }
+        else{
+            $this->apiView->response("el comentario con el id=$id_comentario no existe", 404);
+        }
+    }
 
+    public function deleteComentariosById($params = null){
+        $id_comentario = $params[':ID'];
+        $result =  $this->modelComentario->deleteComentarioId($id_comentario);
+        if ($result > 0) {
+            $this->apiView->response("el comentario con el id=$id_comentario fue eliminada", 200);
+        }
+        else{
+            $this->apiView->response("el comentario con el id=$id_comentario no existe", 404);
+        }
     }
 
 }
+
+
