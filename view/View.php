@@ -14,7 +14,7 @@ class View {
         if(isset($_SESSION['USERNAME_admin'])){
             $this->smarty->assign('nombre', $_SESSION['USERNAME_admin']);
         }
-        if(isset($_SESSION['USERNAME_usuario'])){
+        elseif(isset($_SESSION['USERNAME_usuario'])){
             $this->smarty->assign('nombreUsuario', $_SESSION['USERNAME_usuario']);
         }
     }

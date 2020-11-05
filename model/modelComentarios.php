@@ -26,10 +26,10 @@ class modelComentarios{
         return $query->rowCount();
     }
 
-    function agregarComentarioATabla($id, $comentarios, $puntaje, $id_coment_pantalon){
-        $query=$this->db->prepare('INSERT INTO comentarios (id, comentarios, puntaje, id_coment_pantalon)
-        VALUE (?,?,?, ?)');
-        $query->execute(array($id, $comentarios, $puntaje, $id_coment_pantalon)); 
+    function agregarComentarioATabla($comentario, $puntaje, $id_coment_pantalon){
+        $query=$this->db->prepare('INSERT INTO comentarios (comentarios, puntaje, id_coment_pantalon ) VALUE (?,?,?)');
+        $query->execute(array($comentario, $puntaje, $id_coment_pantalon)); 
+        return $this->db->lastInsertId();
     }
      
 

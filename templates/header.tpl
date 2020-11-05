@@ -17,7 +17,7 @@
 
     <div style="text-align: right;">
         {if isset($nombre)}
-            <p>Hola - {$nombre}</p>
+            <p>Hola admin - {$nombre}</p>
         {/if}
          {if isset($nombreUsuario)}
             <p>Hola - {$nombreUsuario}</p>

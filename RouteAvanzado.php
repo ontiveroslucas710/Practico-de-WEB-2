@@ -33,7 +33,6 @@
     $r->addRoute("editPantalon/:ID", "GET", "PantalonController", "showFormEditPantalon");
     $r->addRoute("borrarPantalon/:ID", "GET", "modifierPantalonController", "borrarPantalon");
     $r->addRoute("agregarPantalon", "POST", "modifierPantalonController", "insertPantalon");
-    $r->addRoute("addComentario/:ID", "GET", "PantalonController", "addComentario");
 
     //formularios
     $r->addRoute("editPantalon", "POST", "modifierPantalonController", "Edit"); 

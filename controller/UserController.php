@@ -24,13 +24,17 @@ class UserController{
         
         if(isset($nombre)){
             $BDusuario= $this->model->getusuario($nombre);
+
             if(isset($BDusuario) && $BDusuario){                
+
                 if(password_verify($contraseña, $BDusuario->password)){
+
                     if($BDusuario->administrador == 1){
                         session_start();
                         $_SESSION['USERNAME_admin']= $BDusuario->nombre;
                         $this->view->volverALaHome();                    
-                    }elseif($BDusuario->administrador == 0){
+                    }
+                    elseif($BDusuario->administrador == 0){
                         session_start();
                         $_SESSION['USERNAME_usuario']= $BDusuario->nombre;
                         $this->view->volverALaHome();                

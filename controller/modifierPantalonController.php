@@ -13,11 +13,11 @@ class modifierPantalonController{
         $this->modelModifierMarca = new ModelModifierMarca;
     }
 
-    private function checkLoggedIn(){
+    private function checkLoggedInAdmin(){
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }
-        if(!isset($_SESSION["USERNAME"])){
+        if(!isset($_SESSION["USERNAME_admin"])){
             $this->view->irARegistrar();
             die();
         }
@@ -34,7 +34,7 @@ class modifierPantalonController{
 
     //Agrega pantalones en la lista completa
     function insertPantalon(){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
          $nombre=$_POST['nombre'];
          $talle=$_POST['talle'];
          $color=$_POST['color'];
@@ -47,14 +47,14 @@ class modifierPantalonController{
 
     //Borra pantalon de la lista completa
     function borrarPantalon($params = null){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $id_borrar= $params[':ID'];
         $this->modelModifierPantalon->deletPantalon($id_borrar);        
         $this->view->volverlocation();   
     }  
 
     function Edit(){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $dato =$_POST['id'];
         $nombre_editar=$_POST['nombre_edit'];
         $talle_editar=$_POST['talle_edit'];
@@ -67,7 +67,7 @@ class modifierPantalonController{
     }  
     
     function agregarMarca(){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $marca=$_POST['marca'];
         $descripcion=$_POST['descripcion'];
         $this->modelModifierMarca->addMarca($marca, $descripcion);
@@ -75,14 +75,14 @@ class modifierPantalonController{
     }
     
     function borrarMarca($params = null){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $id_borrarMarca= $params[':ID'];
         $this->modelModifierMarca->deletMarca($id_borrarMarca);        
         $this->view->volverlocation(); 
     }
     
     function editMarca(){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $dato =$_POST['id_edit'];
         $marca_editar=$_POST['marca_edit'];
         $descrip_editar=$_POST['descripcion_edit'];

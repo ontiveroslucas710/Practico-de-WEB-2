@@ -27,18 +27,4 @@ class ModelModifierPantalon {
         $query->execute(array($nombre,$talle,$color,$tela,$precio,$marca,$dato));
     }
 
-    function addMarca($marca, $descripcion){
-        $query=$this->db->prepare('INSERT INTO marca (descripcion, marca)
-        VALUE (?,?)');
-        $query->execute(array($descripcion, $marca));  
-    }
-
-    function editarMarca($edit_marca, $descripcion_editar, $dato){
-        $query=$this->db->prepare('UPDATE marca SET descripcion=?, marca=? WHERE id_marca=?');
-        $query->execute(array($descripcion_editar, $edit_marca, $dato));
-    }
-    function deletMarca($dato){
-        $query=$this->db->prepare('DELETE FROM marca WHERE id_marca=?');
-        $query->execute(array($dato));
-    }
 }

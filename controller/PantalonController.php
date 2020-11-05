@@ -15,7 +15,7 @@ class PantalonController{
         $this->ModelPantalones= new ModelPantalones();
     }
     
-    private function checkLoggedIn(){
+    private function checkLoggedInAdmin(){
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }
@@ -53,24 +53,15 @@ class PantalonController{
     }    
      //Tanto showFromEdit como Edit sirven para poder editar el elemento seleccionado
      function showFormEditPantalon($params){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $id_editar= $params[':ID'];
         $dato = $this->ModelPantalones->getById($id_editar);
         $datomarca = $this->modelMarca->getMarca();
         $this->view->mostrarFormularioEditarPantalon($dato,$datomarca);
     }
 
-
-    function addComentario($params = null){
-        $this->checkLoggenInUsuarioComun();
-        $id_comentario = $params[':ID'];
-        $dato = $this->ModelPantalones->getById($id_comentario);
-        $this->view->mostrarFormularioComentario($dato);
-    }
-
-
     function showFormEditMarca($params){
-        $this->checkLoggedIn();
+        $this->checkLoggedInAdmin();
         $id_editarMarca= $params[':ID'];
         $datoMarca = $this->modelMarca->getByEditMarca($id_editarMarca);
         $this->view->mostrarForumarioEditarMarca($datoMarca);

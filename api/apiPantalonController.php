@@ -1,12 +1,10 @@
 <?php
 require_once './model/modelComentarios.php';
-require_once './api/apiView.php';
-class apiPantalonController{
-
-    private $modelComentario;
-    private $apiView;
+require_once 'APIController.php';
+class apiPantalonController extends ApiController{
 
     function __construct(){
+        parent::__construct();
         $this->apiView = new apiView();
         $this->modelComentario= new modelComentarios();
     }
@@ -19,7 +17,6 @@ class apiPantalonController{
     public function getComentariosById($params = null){
         $id_comentario = $params[':ID'];
         $dato = $this->modelComentario->getComentarioPorId($id_comentario);
-
         if (!empty($dato)) {
             $this->apiView->response($dato, 200);
         }
@@ -39,6 +36,20 @@ class apiPantalonController{
         }
     }
 
+    public function addComentario($params = null){
+        $body = $this->getData();
+        $comentario = $body->comentarios;
+        $puntaje = $body->puntaje;
+        $id_coment_pantalon = $body->id_coment_pantalon;
+
+        $id_dato = $this->modelComentario->agregarComentarioATabla($comentario, $puntaje, $id_coment_pantalon);
+        if (!empty($id_dato)) {
+            $this->apiView->response("el comentario fue agregado con exito", 200);
+        }
+        else{
+            $this->apiView->response("el comentario no se pudo insertar", 404);
+        }
+    }
 }
 
 

@@ -11,8 +11,11 @@ class UserView {
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }         
-        if(isset($_SESSION['USERNAME'])){
-            $this->smarty->assign('nombre', $_SESSION['USERNAME']);
+        if(isset($_SESSION['USERNAME_admin'])){
+            $this->smarty->assign('nombre', $_SESSION['USERNAME_admin']);
+        }
+        elseif(isset($_SESSION['USERNAME_usuario'])){
+            $this->smarty->assign('nombreUsuario', $_SESSION['USERNAME_usuario']);
         }
     }
     
@@ -33,10 +36,7 @@ class UserView {
     }
     function volverARegistro(){
         header("Location: ".BASE_URL."login");
-    }
-
-
-  
+    }  
     
     
     
