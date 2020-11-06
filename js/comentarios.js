@@ -1,5 +1,19 @@
 "use strick"
 
+let path = window.location.pathname;
+let ultimoNumero = path.substring(path.lastIndexOf('/')+1)
+console.log(path);
+console.log(ultimoNumero);
+
+
+function getAbsolutePath(){
+    var loc = window.location;
+    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
+    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
+}
+let link = getAbsolutePath();
+console.log(link);
+
 const baseURL = 'api/comentario';
 const borrarComentario = 'api/borrarComentario';
 let body = document.getElementById("appearsComments");

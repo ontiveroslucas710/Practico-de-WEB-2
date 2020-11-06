@@ -33,7 +33,7 @@
                         <td>{$dato->tela}</td>
                         <td>{$dato->precio}</td>
                         <td>{$dato->marca}</td>
-                        <th><a href="verComentario/{$dato->id_pantalones}"><i style='font-size:24px' class='fas'>&#xf550;</i></a></td>
+                        <th><a id="myLink" href="comentario/{$dato->id_pantalones}"><i style='font-size:24px' class='fas'>&#xf550;</i></a></td>
                         {if isset($nombre)}
                         <td><a class="btn-editar"  href="editPantalon/{$dato->id_pantalones}">Editar</a></td>
                         <td><a href="borrarPantalon/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
