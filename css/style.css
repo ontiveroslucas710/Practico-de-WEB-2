@@ -162,7 +162,7 @@ table, tr, td, th {border: 2px solid black;
 
 /*le ponemos color al thead de la tabla*/
 thead{
-    background-color: pink;
+    background-color: grey;
 }
 .texto{
     text-decoration: underline;

@@ -1,32 +1,30 @@
 "use strick"
 
 let path = window.location.pathname;
+let api = 'api';
+let comentario = path.substring(19, path.lastIndexOf('/')+1)
 let ultimoNumero = path.substring(path.lastIndexOf('/')+1)
-console.log(path);
-console.log(ultimoNumero);
+let agregarComentario = "agregarComentario";
 
-
-function getAbsolutePath(){
-    var loc = window.location;
-    var pathName = loc.pathname.substring(0, loc.pathname.lastIndexOf('/') + 1);
-    return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
-}
-let link = getAbsolutePath();
-console.log(link);
-
-const baseURL = 'api/comentario';
 const borrarComentario = 'api/borrarComentario';
 let body = document.getElementById("appearsComments");
+let tableNoComments= document.getElementById("noCommets");
 
 function getComentarios() {
-    fetch(baseURL)
-        .then(response => response.json())
-        .then(comentarios =>  showComentarios(comentarios))
+    fetch(api+"/"+comentario+ultimoNumero)
+        .then(function (r) {
+            if (!r.ok) {//si la respuesta no es ok
+                noComments();
+            }else if(r.ok){//si esta todo bien dame json
+                return r.json()
+            }
+        })
+        .then(comentarios => showComentarios(comentarios))
         .catch(error => console.log(error));
 }
 
-function showComentarios(comentarios){
-    for(let coment of comentarios) {
+function showComentarios(comentarios){  
+    for(let coment of comentarios){
         let boton = document.createElement("button");
         boton.innerText = "Borrar";
         let nodotr = document.createElement("tr");
@@ -41,7 +39,7 @@ function showComentarios(comentarios){
         nodotr.appendChild(nodotd2);
         nodotd3.appendChild(boton);
         nodotr.appendChild(nodotd3);
-        body.appendChild(nodotr);
+        body.appendChild(nodotr);        
     }
 }
 
@@ -52,31 +50,44 @@ function eliminar(id) {
 
     }).then(function (r) {
         if (!r.ok) {
-            console.log("error")
+            console.log("no se pudo borrar el elemento")
+        }else if(r.ok){
+            return r.json()
         }
-        return r.json()
     }).then(function () {
         showComentarios();
     }).catch(function (e) {
         console.log(e)
     })
 }
-
-function agregarComentario() {
-    fetch(borrarComentario, {
+function addComentario() {
+    let data = {
+        comentarios: 'comentario desde javascript',
+        puntaje: 5,
+        id_coment_pantalon: 24
+    }
+    fetch(api+"/"+agregarComentario, {
         "method": "POST",
-        "mode": 'cors',
-
+        "headers": { "Content-Type": "application/json" },
+        "body": JSON.stringify(data)
     }).then(function (r) {
         if (!r.ok) {
             console.log("error")
         }
         return r.json()
-    }).then(function () {
-        showComentarios();
-    }).catch(function (e) {
-        console.log(e)
     })
+        .then(function (json) {
+            getComentarios(json);
+        })
+        .catch(function (e) {
+            console.log(e)
+        })
+}
+
+
+function noComments(){
+    tableNoComments.innerHTML="";
+    tableNoComments.innerHTML="No hay comentarios aun"
 }
 
 function limpiarTabla() {

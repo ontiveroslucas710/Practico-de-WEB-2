@@ -49,7 +49,7 @@
         {/if}
     </div>
 
-    <div>
+    <div id="noCommets">
         <table>
             <thead>
                 <tr>

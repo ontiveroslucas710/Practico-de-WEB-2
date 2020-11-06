@@ -21,7 +21,7 @@ class apiPantalonController extends ApiController{
             $this->apiView->response($dato, 200);
         }
         else{
-            $this->apiView->response("el comentario con el id=$id_comentario no existe", 404);
+            $this->apiView->response("no existen comentarios con el id=$id_comentario ", 404);
         }
     }
 
