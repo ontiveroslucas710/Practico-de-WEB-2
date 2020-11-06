@@ -35,7 +35,11 @@
                <li><a href="home">Home</a></li>
                <li><a href="ropa">Nuestros pantalones</a></li>
                <li><a href="tabla_de_pantalones">Lista de pantalones</a></li>
+               {if isset($nombre)}
+               <li><a href="tablaAdministradore">Tabla Administradores </a></li>
+                {/if}
 
+                
                 {if isset($nombre) || isset($nombreUsuario) }
                     <li><a class="btn-borrar" href="logout">Log out</a></li>
                 {/if}

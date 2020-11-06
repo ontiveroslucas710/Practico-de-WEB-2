@@ -35,7 +35,7 @@
     </table>
         <br>
         <br>
-        {if isset($nombreUsuario)}
+        {if isset($nombreUsuario) || isset($nombre)}
             <label for="">comentario</label>
            <textarea name="comentario" id="" cols="30" rows="1"></textarea>
            <label for="">puntaje</label>

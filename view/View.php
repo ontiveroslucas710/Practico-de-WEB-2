@@ -71,6 +71,12 @@ class View {
         $this->smarty->assign('panta', $dato); 
         $this->smarty->display('templates/comentarioPantalon.tpl');
     }
+
+
+    function showAdministradores($dato){
+        $this->smarty->assign('administrador', $dato); 
+        $this->smarty->display('templates/tablaAdministradores.tpl');
+    }
     
     function volverlocation(){        
         header("Location: ".BASE_URL."tabla_de_pantalones");        

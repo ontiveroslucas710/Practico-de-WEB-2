@@ -2,12 +2,12 @@
 
 let path = window.location.pathname;
 let api = 'api';
-let comentario = path.substring(19, path.lastIndexOf('/')+1)
-let ultimoNumero = path.substring(path.lastIndexOf('/')+1)
-let agregarComentario = "agregarComentario";
-
+let comentario = path.substring(19, path.lastIndexOf('/')+1);
+let ultimoNumero = path.substring(path.lastIndexOf('/')+1);
+const agregarComentario = "agregarComentario";
 const borrarComentario = 'api/borrarComentario';
-let body = document.getElementById("appearsComments");
+
+const body = document.getElementById("appearsComments");
 let tableNoComments= document.getElementById("noCommets");
 
 function getComentarios() {
@@ -24,6 +24,7 @@ function getComentarios() {
 }
 
 function showComentarios(comentarios){  
+    limpiarTabla();
     for(let coment of comentarios){
         let boton = document.createElement("button");
         boton.innerText = "Borrar";
@@ -55,16 +56,19 @@ function eliminar(id) {
             return r.json()
         }
     }).then(function () {
-        showComentarios();
+        getComentarios();
     }).catch(function (e) {
         console.log(e)
     })
 }
+
+
+
 function addComentario() {
     let data = {
-        comentarios: 'comentario desde javascript',
+        comentarios: 'comentario desde javascript con lucas',
         puntaje: 5,
-        id_coment_pantalon: 24
+        id_coment_pantalon: 23
     }
     fetch(api+"/"+agregarComentario, {
         "method": "POST",
@@ -75,15 +79,14 @@ function addComentario() {
             console.log("error")
         }
         return r.json()
-    })
+        })
         .then(function (json) {
             getComentarios(json);
-        })
-        .catch(function (e) {
+        }).catch(function (e) {
             console.log(e)
         })
 }
-
+addComentario();
 
 function noComments(){
     tableNoComments.innerHTML="";

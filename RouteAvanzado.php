@@ -1,6 +1,7 @@
 <?php
     require_once 'controller/PantalonController.php';
     require_once 'controller/modifierPantalonController.php';
+    require_once 'controller/controllerAdministradores.php';
     require_once 'controller/UserController.php';
     require_once 'RouterClass.php';
     
@@ -19,7 +20,7 @@
     $r->addRoute("home", "GET", "PantalonController", "home");
     $r->addRoute("ropa", "GET", "PantalonController", "MostrarPantalones");
     $r->addRoute("tabla_de_pantalones", "GET", "PantalonController", "mostrarTabla");
-
+    $r->addRoute("tablaAdministradore", "GET", "controllerAdministradores", "mostrarTablaAdministradores");
     //ACCION PARA FILTRAR MARCA
     $r->addRoute("filtro/:ID", "GET", "PantalonController", "filtrar");
     $r->addRoute("verMas/:ID", "GET", "PantalonController", "verMas");
@@ -34,7 +35,6 @@
     $r->addRoute("borrarPantalon/:ID", "GET", "modifierPantalonController", "borrarPantalon");
     $r->addRoute("agregarPantalon", "POST", "modifierPantalonController", "insertPantalon");
 
-    $r->addRoute("comentario/:ID", "GET", "PantalonController", "comentarios");
 
     //formularios
     $r->addRoute("editPantalon", "POST", "modifierPantalonController", "Edit"); 

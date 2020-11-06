@@ -80,10 +80,8 @@ class PantalonController{
         $this->view->filtroCompleto($dato);  
     }
 
-    function comentarios($params){
-        $id_pantalon= $params[':ID'];
-        $dato=$this->ModelPantalones->getById($id_pantalon);
-        $this->view->showComentarios($dato);      
+    function mostrarTablaAdministradores(){
+        //nos trae del modelo los administradores, los guardamos 
     }
 
 }
