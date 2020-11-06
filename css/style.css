@@ -3,6 +3,10 @@ header, article, .contactenos{
     text-align: center;
 }
 
+.separarEsteDiv{
+    display: flex;
+    justify-content: space-between;
+}
 article, .guiaTRopa, .ropa, .contactenos, #coleccion{
     background-image: url(../img/fondo.jpg);
 }
@@ -56,6 +60,7 @@ ul.navigation li {
     margin: 0px 0px;
     padding: 30px 20px;
 }
+
 
 /*Le saco la decoracion (subrayado), y le pongo color negro a las letras del nav*/
 ul.navigation li a {

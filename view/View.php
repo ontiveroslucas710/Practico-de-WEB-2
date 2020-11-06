@@ -66,6 +66,11 @@ class View {
         $this->smarty->assign('pantalon', $dato);
         $this->smarty->display('templates/formularioComentario.tpl');
     }
+
+    function showComentarios($dato) {      
+        $this->smarty->assign('panta', $dato); 
+        $this->smarty->display('templates/comentarioPantalon.tpl');
+    }
     
     function volverlocation(){        
         header("Location: ".BASE_URL."tabla_de_pantalones");        
