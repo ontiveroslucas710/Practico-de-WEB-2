@@ -28,11 +28,13 @@ class controllerAdministradores{
 
     function mostrarTablaAdministradores(){
         $this->checkLoggedInAdmin();
-        $dato = $this->modelUsuario->getAllUsuarios();
-        if(isset($_SESSION['USERNAME_admin']) == $dato->nombre){
-            var_dump("es el mismo nombre");
-        }
-        die();
+        $nombre=$_SESSION['USERNAME_admin'];
+        
+        $dato = $this->modelUsuario->getAllUsuarios($nombre);
+        
+        $this->view->showAdministradores($dato);
+        
+        
        
     }
 
