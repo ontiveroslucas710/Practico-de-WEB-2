@@ -1,4 +1,4 @@
-"use strick"
+"use strict"
 
 let path = window.location.pathname;
 let api = 'api';

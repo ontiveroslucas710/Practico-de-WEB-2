@@ -10,10 +10,10 @@ class ModelModifierPantalon {
     
     //###########  FUNCIONES PARA MODIFICAR LA TABLA PRINCIPAL ################
     //AGREGAR PANTALON
-    function addPpantalon($nombre,$talle,$color,$tela,$precio,$marca){
-        $query=$this->db->prepare('INSERT INTO pantalon (nombre,talle,color,tela,precio,id_marca)
-        VALUE (?,?,?,?,?,?)');
-        $query->execute(array($nombre,$talle,$color,$tela,$precio,$marca));        
+    function addPpantalon($nombre,$talle,$color,$tela,$precio,$imagen,$marca){
+        $query=$this->db->prepare('INSERT INTO pantalon (nombre,talle,color,tela,precio,imagen,id_marca)
+        VALUE (?,?,?,?,?,?,?)');
+        $query->execute(array($nombre,$talle,$color,$tela,$precio,$imagen,$marca));        
     }  
 
     //ELIMINAR PANTALON

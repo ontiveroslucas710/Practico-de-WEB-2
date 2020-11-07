@@ -36,6 +36,9 @@
                         <td><a href="borrarPantalon/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
                         {/if}
                     </tr>
+                    {if $dato->imagen}
+                       <img src= "capturas/{$dato->imagen}">
+                    {/if}
                     {/foreach}
 
                 </tbody>
@@ -78,7 +81,7 @@
             {if isset($nombre)}
             <p class="texto">Agregar producto</p>
 
-            <form action="agregarPantalon" method="POST">
+            <form action="agregarPantalon" method="POST" enctype="multipart/form-data">
 
                 <input type="text" name="nombre" placeholder="Ingrese Nombre" required>
                 <input type="number" name="talle" placeholder="Ingrese Talle" required>
@@ -90,6 +93,7 @@
                     <option value="{$dato->id_marca}">{$dato->marca}</option>
                     {/foreach}
                 </select>
+                <input type="file" name="img" placeholder="Ingrese una imagen" id="file_id" required>
                 <input type="submit" value="agregar">
             </form>
             {/if}
