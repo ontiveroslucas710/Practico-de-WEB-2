@@ -15,12 +15,15 @@
     $r->addRoute("logout", "GET", "UserController", "logout");
     $r->addRoute("sigin", "GET", "UserController", "registrarse");
     $r->addRoute("registr", "POST", "UserController", "sigin");
-
-
+    
+    
     $r->addRoute("home", "GET", "PantalonController", "home");
     $r->addRoute("ropa", "GET", "PantalonController", "MostrarPantalones");
     $r->addRoute("tabla_de_pantalones", "GET", "PantalonController", "mostrarTabla");
     $r->addRoute("tablaAdministradore", "GET", "controllerAdministradores", "mostrarTablaAdministradores");
+    $r->addRoute("eliminarUsuario/:ID", "GET", "controllerAdministradores", "eliminarUsuario");
+    $r->addRoute("hacerAdmin/:ID", "GET", "controllerAdministradores", "hacerAdmin");
+    $r->addRoute("quitarAdmin/:ID", "GET", "controllerAdministradores", "quitarAdmin");
     //ACCION PARA FILTRAR MARCA
     $r->addRoute("filtro/:ID", "GET", "PantalonController", "filtrar");
     $r->addRoute("verMas/:ID", "GET", "PantalonController", "verMas");
@@ -34,6 +37,7 @@
     $r->addRoute("editPantalon/:ID", "GET", "PantalonController", "showFormEditPantalon");
     $r->addRoute("borrarPantalon/:ID", "GET", "modifierPantalonController", "borrarPantalon");
     $r->addRoute("agregarPantalon", "POST", "modifierPantalonController", "insertPantalon");
+
 
 
     //formularios

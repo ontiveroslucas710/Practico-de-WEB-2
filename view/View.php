@@ -74,7 +74,7 @@ class View {
 
 
     function showAdministradores($dato){
-        $this->smarty->assign('administrador', $dato); 
+        $this->smarty->assign('usuarios', $dato); 
         $this->smarty->display('templates/tablaAdministradores.tpl');
     }
     
@@ -86,7 +86,9 @@ class View {
         header("Location: ".BASE_URL."login");
     }
    
- 
+    function locationAdministrador(){
+        header("Location: ".BASE_URL."tablaAdministradore");        
+    }
     
 }
 

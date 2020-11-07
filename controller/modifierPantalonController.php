@@ -11,6 +11,7 @@ class modifierPantalonController{
         $this->view= new View();
         $this->modelModifierPantalon = new ModelModifierPantalon();
         $this->modelModifierMarca = new ModelModifierMarca;
+        
     }
 
     private function checkLoggedInAdmin(){

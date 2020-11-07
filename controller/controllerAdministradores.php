@@ -14,6 +14,9 @@ class controllerAdministradores{
         $this->modelMarca= new ModelMarca();
         $this->modelUsuario = new UserModel();
         $this->ModelPantalones= new ModelPantalones();
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }
     }
     private function checkLoggedInAdmin(){
         if(session_status() !== PHP_SESSION_ACTIVE){
@@ -28,14 +31,33 @@ class controllerAdministradores{
 
     function mostrarTablaAdministradores(){
         $this->checkLoggedInAdmin();
-        $nombre=$_SESSION['USERNAME_admin'];
-        
-        $dato = $this->modelUsuario->getAllUsuarios($nombre);
-        
-        $this->view->showAdministradores($dato);
-        
-        
-       
+        $nombre=$_SESSION['USERNAME_admin'];       
+        $dato = $this->modelUsuario->getAllUsuarios($nombre);       
+        $this->view->showAdministradores($dato);               
     }
 
+    //abria que hacer alguna funcion para que cuando elimines
+    // un usuario o admin te aparezca estas seguro que quieras borrar?
+    function eliminarUsuario($params = null){
+        $this->checkLoggedInAdmin();
+        $id_usuario = $params[':ID'];
+        $this->modelUsuario->deletUsuario($id_usuario);
+        $this->view->locationAdministrador();
+    }
+
+    function hacerAdmin($params = null){
+        $this->checkLoggedInAdmin();
+        $admin = 1;
+        $id_usuario = $params[':ID'];
+        $this->modelUsuario->doItAdmin($admin, $id_usuario);
+        $this->view->locationAdministrador();
+    }
+
+    function quitarAdmin($params = null) {
+        $this->checkLoggedInAdmin();
+        $admin = 0;
+        $id_usuario = $params[':ID'];
+        $this->modelUsuario->removeAdministration($admin, $id_usuario);
+        $this->view->locationAdministrador();
+    }
 }

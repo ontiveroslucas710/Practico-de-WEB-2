@@ -9,26 +9,30 @@ class UserController{
     function __construct(){
         $this->view= new UserView();
         $this->model= new UserModel();
+        if(session_status() !== PHP_SESSION_ACTIVE){
+            session_start();
+        }               
     }   
+   
 
-     function iniciarsesion(){
+    function iniciarsesion(){
         $this->view->formSesion();
     }
     function registrarse(){
         $this->view->formRegistro();
     }
 
+   
+
+
+
     function verificaForm(){
         $nombre= $_POST['usuario'];
-        $contraseña= $_POST['contraseña'];  
-        
+        $contraseña= $_POST['contraseña'];     
         if(isset($nombre)){
             $BDusuario= $this->model->getusuario($nombre);
-
-            if(isset($BDusuario) && $BDusuario){                
-
+            if(isset($BDusuario) && $BDusuario){               
                 if(password_verify($contraseña, $BDusuario->password)){
-
                     if($BDusuario->administrador == 1){
                         session_start();
                         $_SESSION['USERNAME_admin']= $BDusuario->nombre;
