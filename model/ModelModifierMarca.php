@@ -18,6 +18,7 @@ class ModelModifierMarca {
         $query=$this->db->prepare('UPDATE marca SET descripcion=?, marca=? WHERE id_marca=?');
         $query->execute(array($descripcion_editar, $edit_marca, $dato));
     }
+    
     function deletMarca($dato){
         $query=$this->db->prepare('DELETE FROM marca WHERE id_marca=?');
         $query->execute(array($dato));

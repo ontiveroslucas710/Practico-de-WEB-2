@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function getComentarios() {
     fetch(api+"/"+comentario+ultimoNumero)
         .then(function (r) {
-            if (!r.ok) {//si la respuesta no es ok
+            if (!r.ok) { //si no existe elementos
                 noComments();
             }else if(r.ok){//si esta todo bien dame json
                 return r.json()
@@ -74,29 +74,31 @@ function eliminar(id) {
 
 
 function addComentario() {
-    let comentario = document.querySelector('textarea[name="comentario"]').value;
-    let puntaje = document.querySelector('select[name="puntaje"]').value;
-    let id = document.querySelector('input[name="idDelComentario"]').value;
-    let data = {
-        comentarios: comentario,
-        puntaje: puntaje,
-        id_coment_pantalon: id
-    }
-    fetch(api+"/"+agregarComentario, {
-        "method": "POST",
-        "headers": { "Content-Type": "application/json" },
-        "body": JSON.stringify(data)
-    }).then(function (r) {
-        if (!r.ok) {
-            console.log("error")
+    let comentario = document.querySelector('textarea[name="comentario"]');
+    let puntaje = document.querySelector('select[name="puntaje"]');
+    let id = document.querySelector('input[name="idDelComentario"]');
+    if((comentario.value && puntaje.value) != ""){
+        let data = {
+            comentarios: comentario.value,
+            puntaje: puntaje.value,
+            id_coment_pantalon: id.value
         }
-        return r.json()
-        })
-        .then(function (json) {
-            getComentarios(json);
-        }).catch(function (e) {
-            console.log(e)
-        })
+        fetch(api+"/"+agregarComentario, {
+            "method": "POST",
+            "headers": { "Content-Type": "application/json" },
+            "body": JSON.stringify(data)
+        }).then(function (r) {
+            if (!r.ok) {
+                console.log("error")
+            }
+            return r.json()
+            })
+            .then(function (json) {
+                getComentarios(json);
+            }).catch(function (e) {
+                console.log(e)
+            })
+    }
 }
 
 

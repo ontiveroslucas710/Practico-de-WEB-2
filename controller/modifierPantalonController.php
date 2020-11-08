@@ -36,21 +36,12 @@ class modifierPantalonController{
     //Agrega pantalones en la lista completa
     function insertPantalon(){
         $this->checkLoggedInAdmin();
-        /**
-         * Array ( [img] => 
-         * Array ( [name] => jean-azul.jpg 
-         * [type] => image/jpeg 
-         * [tmp_name] => C:\xampp\tmp\phpE7D4.tmp 
-         * [error] => 0 
-         * [size] => 179630 ) )
-         */
         if(isset($_FILES['img'])){
             $capturas= getcwd()."/capturas/";
             $destino= tempnam($capturas,$_FILES['img']['tmp_name']);
             move_uploaded_file($_FILES['img']['tmp_name'], $destino);
             $destino= basename($destino);
-        }
-        
+        }        
          $nombre=$_POST['nombre'];
          $talle=$_POST['talle'];
          $color=$_POST['color'];
@@ -61,7 +52,6 @@ class modifierPantalonController{
          $this->view->volverlocation();        
      }    
 
-    //Borra pantalon de la lista completa
     function borrarPantalon($params = null){
         $this->checkLoggedInAdmin();
         $id_borrar= $params[':ID'];

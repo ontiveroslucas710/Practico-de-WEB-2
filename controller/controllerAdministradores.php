@@ -1,19 +1,14 @@
 <?php
-require_once './model/ModelMarca.php';
-require_once './model/ModelPantalones.php';
+require_once './model/UserModel.php';
 require_once './view/View.php';
 
 class controllerAdministradores{
-    private $model;
-    private $ModelPantalones;
-    private $modelMarca;
+ 
     private $view;
-    private $modelComentarios;
+
     function __construct(){
         $this->view= new View();
-        $this->modelMarca= new ModelMarca();
         $this->modelUsuario = new UserModel();
-        $this->ModelPantalones= new ModelPantalones();
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();
         }
@@ -27,7 +22,6 @@ class controllerAdministradores{
             die();
         }
     }
-
 
     function mostrarTablaAdministradores(){
         $this->checkLoggedInAdmin();
@@ -49,7 +43,7 @@ class controllerAdministradores{
         $this->checkLoggedInAdmin();
         $admin = 1;
         $id_usuario = $params[':ID'];
-        $this->modelUsuario->doItAdmin($admin, $id_usuario);
+        $this->modelUsuario->makeOrRemoveAdmin($admin, $id_usuario);
         $this->view->locationAdministrador();
     }
 
@@ -57,7 +51,7 @@ class controllerAdministradores{
         $this->checkLoggedInAdmin();
         $admin = 0;
         $id_usuario = $params[':ID'];
-        $this->modelUsuario->removeAdministration($admin, $id_usuario);
+        $this->modelUsuario->makeOrRemoveAdmin($admin, $id_usuario);
         $this->view->locationAdministrador();
     }
 }
