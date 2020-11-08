@@ -2,7 +2,7 @@
 
 let path = window.location.pathname;
 let api = 'api';
-let comentario = path.substring(19, path.lastIndexOf('/')+1);
+let comentario = path.substring(path.length-13, path.lastIndexOf('/')+1);
 let ultimoNumero = path.substring(path.lastIndexOf('/')+1);
 const agregarComentario = "agregarComentario";
 const borrarComentario = 'api/borrarComentario';
