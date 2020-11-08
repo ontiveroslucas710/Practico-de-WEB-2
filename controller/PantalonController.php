@@ -1,6 +1,7 @@
 <?php
 require_once './model/ModelMarca.php';
 require_once './model/ModelPantalones.php';
+require_once './model/modelComentarios.php';
 require_once './view/View.php';
 
 class PantalonController{
@@ -8,11 +9,13 @@ class PantalonController{
     private $ModelPantalones;
     private $modelMarca;
     private $view;
+    private $modelComentario;
 
     function __construct(){
         $this->view= new View();
         $this->modelMarca= new ModelMarca();
         $this->ModelPantalones= new ModelPantalones();
+        $this->modelComentario = new modelComentarios();
     }
     
     private function checkLoggedInAdmin(){
@@ -80,8 +83,12 @@ class PantalonController{
         $this->view->filtroCompleto($dato);  
     }
 
-    function mostrarTablaAdministradores(){
-        //nos trae del modelo los administradores, los guardamos 
+ 
+    function mostrarComentario($params = null){
+        $id_comentario = $params[':ID'];
+        $dato = $this->ModelPantalones->getById($id_comentario);
+        $this->view->showComentarios($dato);
     }
+
 
 }

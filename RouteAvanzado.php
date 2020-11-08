@@ -20,6 +20,8 @@
     $r->addRoute("home", "GET", "PantalonController", "home");
     $r->addRoute("ropa", "GET", "PantalonController", "MostrarPantalones");
     $r->addRoute("tabla_de_pantalones", "GET", "PantalonController", "mostrarTabla");
+
+    $r->addRoute("comentario/:ID", "GET", "PantalonController", "mostrarComentario");
     $r->addRoute("tablaAdministradore", "GET", "controllerAdministradores", "mostrarTablaAdministradores");
     $r->addRoute("eliminarUsuario/:ID", "GET", "controllerAdministradores", "eliminarUsuario");
     $r->addRoute("hacerAdmin/:ID", "GET", "controllerAdministradores", "hacerAdmin");
