@@ -13,6 +13,7 @@
                         <th>Tela</th>
                         <th>Precio</th>
                         <th>marca</th>
+                        <th>Imagen</th>
                         <th>comentarios</th>
                         {if isset($nombre)}
                         <th>Editar</th>
@@ -30,15 +31,17 @@
                         <td>{$dato->tela}</td>
                         <td>{$dato->precio}</td>
                         <td>{$dato->marca}</td>
+                        {if $dato->imagen}
+                            <td><img width="30px" src= "capturas/{$dato->imagen}"></td>
+                        {else}
+                        <td>no imagen</td>
+                        {/if}
                         <th><a href="comentario/{$dato->id_pantalones}"><i style='font-size:24px' class='fas'>&#xf550;</i></a></td>
                         {if isset($nombre)}
                         <td><a class="btn-editar"  href="editPantalon/{$dato->id_pantalones}">Editar</a></td>
                         <td><a href="borrarPantalon/{$dato->id_pantalones}"><img src="./img/icono-borrar.jpg" width="20" height="20" alt="" srcset=""></a></td>
                         {/if}
                     </tr>
-                    {if $dato->imagen}
-                       <img src= "capturas/{$dato->imagen}">
-                    {/if}
                     {/foreach}
 
                 </tbody>
