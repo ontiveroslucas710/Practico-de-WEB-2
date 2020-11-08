@@ -36,6 +36,7 @@
         <br>
         <br>
         {if isset($nombreUsuario) || isset($nombre)}
+         <form id="agregarComentario" method="post">
             <label for="">comentario</label>
            <textarea name="comentario" id="" cols="30" rows="1"></textarea>
            <label for="">puntaje</label>
@@ -45,7 +46,12 @@
                <option value="3">3</option>
                <option value="4">4</option>
                <option value="5">5</option>
-           </select>
+           </select>  
+            {foreach from=$panta item=dato}     
+                <input type="hidden" name="idDelComentario" value="{$dato->id_pantalones}">
+            {/foreach} 
+            <button type="submit">agregar</button>
+            </form>
         {/if}
     </div>
 

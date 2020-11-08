@@ -10,6 +10,15 @@ const borrarComentario = 'api/borrarComentario';
 const body = document.getElementById("appearsComments");
 let tableNoComments= document.getElementById("noCommets");
 
+document.addEventListener('DOMContentLoaded', () => {
+    getComentarios();
+    document.getElementById("agregarComentario").addEventListener('submit', e => {
+        e.preventDefault();
+        addComentario();
+    })
+})
+
+
 function getComentarios() {
     fetch(api+"/"+comentario+ultimoNumero)
         .then(function (r) {
@@ -65,10 +74,13 @@ function eliminar(id) {
 
 
 function addComentario() {
+    let comentario = document.querySelector('textarea[name="comentario"]').value;
+    let puntaje = document.querySelector('select[name="puntaje"]').value;
+    let id = document.querySelector('input[name="idDelComentario"]').value;
     let data = {
-        comentarios: 'comentario desde javascript con lucas',
-        puntaje: 5,
-        id_coment_pantalon: 23
+        comentarios: comentario,
+        puntaje: puntaje,
+        id_coment_pantalon: id
     }
     fetch(api+"/"+agregarComentario, {
         "method": "POST",
@@ -86,7 +98,7 @@ function addComentario() {
             console.log(e)
         })
 }
-addComentario();
+
 
 function noComments(){
     tableNoComments.innerHTML="";
