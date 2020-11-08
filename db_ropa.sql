@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-11-2020 a las 01:34:26
--- Versión del servidor: 10.4.13-MariaDB
--- Versión de PHP: 7.4.7
+-- Tiempo de generación: 08-11-2020 a las 01:25:29
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,11 +40,9 @@ CREATE TABLE `comentarios` (
 
 INSERT INTO `comentarios` (`id`, `comentarios`, `puntaje`, `id_coment_pantalon`) VALUES
 (1, 'Esta bermuda esta buenisima, super comoda y todo genial. ', 5, 40),
-(5, 'sdkajkdlajslkdjaklsdjklasjdklsajklda', 4, 23),
 (9, 'Comentario agregado desde postman ', 3, 24),
-(10, 'OTRO COMENTARIO  agregado desde postman ', 6, 40),
 (12, 'ver sarasa ostman ', 3, 24),
-(15, ' AGREGO CON LUCAS', 4, 23);
+(0, 'comentario desde javascript con lucas', 5, 23);
 
 -- --------------------------------------------------------
 
@@ -63,13 +61,21 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`id_marca`, `descripcion`, `marca`) VALUES
+(3, 'nueva descripcion de narrow', 'NARROW'),
 (6, 'para el campo', 'PAMPERO'),
 (7, 'descripcion de Kloster', 'KLOSTER'),
 (9, 'descripcion de vanderholl', 'VANDERHOLL'),
 (10, 'descripcion de Huapi', 'HUAPI'),
 (11, 'descripcion de levi´s', 'LEVI´S'),
 (12, 'descripcion de bearcliff', 'BEARCLIFF'),
-(15, 'descripcion de mossimo', 'MOSSIMO');
+(13, 'descripcion de basement', 'BASEMENT'),
+(14, 'descripcion de americanino', 'AMERICANINO'),
+(15, 'descripcion de mossimo', 'MOSSIMO'),
+(16, 'descripcion de volcom', 'VOLCOM'),
+(17, 'descripcion de brooksfield', 'BROOKSFIELD'),
+(18, 'descripcion de Roberto Cavalli', 'ROBERTO CAVALLI'),
+(20, 'muy buena', 'MUestra'),
+(24, 'PARA IR CERCA', 'CERCANI');
 
 -- --------------------------------------------------------
 
@@ -84,6 +90,7 @@ CREATE TABLE `pantalon` (
   `color` varchar(55) NOT NULL,
   `tela` varchar(55) NOT NULL,
   `precio` float NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL,
   `id_marca` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -91,11 +98,17 @@ CREATE TABLE `pantalon` (
 -- Volcado de datos para la tabla `pantalon`
 --
 
-INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `precio`, `id_marca`) VALUES
-(22, 'Rally', 35, 'azul oscuro', 'estilizada', 2990, 7),
-(23, 'jean cannosa', 42, 'gris', 'denim', 2800, 10),
-(24, 'Biolish', 43, 'celeste', 'mezclilla', 2900, 7),
-(40, 'BERMUDA NUEVA', 62, 'GROW', 'SUVE', 2345, 11);
+INSERT INTO `pantalon` (`id_pantalones`, `nombre`, `talle`, `color`, `tela`, `precio`, `imagen`, `id_marca`) VALUES
+(17, 'jeans', 40, 'azul claro', 'algodon', 3490, NULL, 3),
+(22, 'Rally', 35, 'azul oscuro', 'estilizada', 2990, NULL, 7),
+(23, 'jean canno', 42, 'gris', 'denim', 2800, NULL, 9),
+(24, 'Biolish', 43, 'celeste', 'mezclilla', 2900, NULL, 7),
+(30, 'pantalón chino con cinturón', 43, 'crema', 'algodon', 5900, NULL, 13),
+(31, 'balcarce', 38, 'beige', 'algodón ', 2300, NULL, 6),
+(33, 'jeans urbano', 40, 'negro', 'algodon', 3500, NULL, 17),
+(40, 'BERMUD new', 62, 'GROW', 'SUVE', 2345, 'pantalon-muestra.jpg', 3),
+(45, 'erere', 4, 'dfffx', 'xss', -10, 'phpE952.tmp', 20),
+(46, 'sdfd', 2, 'dffd', 'ddfd', 4, 'php5032.tmp', 7);
 
 -- --------------------------------------------------------
 
@@ -117,21 +130,14 @@ CREATE TABLE `usuario` (
 INSERT INTO `usuario` (`id`, `nombre`, `password`, `administrador`) VALUES
 (5, 'lucas123', '$2y$10$oTxg6SodRUUZRpcNnOYgaua.tYZ66MlJV.TFzcB33LC9gYEPWR3Ya', 1),
 (8, 'mariano123', '$2y$10$nQTJWkxZfULLNkmBK.pOvOk4pKBiM2Tcaqx2i/9xEf/pjDrArJk0K', 1),
-(9, 'usuario1', '$2y$10$tvd32pOWVMlQ1rEnwk4jHeURIDcpSMep4BEZ/U3eqike8EIkU/6fO', 0),
+(9, 'usuario1', '$2y$10$tvd32pOWVMlQ1rEnwk4jHeURIDcpSMep4BEZ/U3eqike8EIkU/6fO', 1),
 (10, 'usuario2', '$2y$10$xEjAb/RkZdQjkqVy1CusaO1qhrjj2bL3uADeej1KnWlAhOeK6n3Nu', 0),
 (11, 'usuario3', '$2y$10$tXAGmZQOtg4GXo2j15NZde0332iRaX2n8rSGSNhoLYyTGH8RlOBRG', 0),
-(12, 'marianomayo', '$2y$10$vzUAApSjgrT63ljlCfxp7.GRlqdh.N/IF4In18fZgYPiJFpvMd7bG', 0);
+(13, 'prueba', '$2y$10$pgNE/QJg5bz9Ej3VRRUPAuuJrIIkKFbLqYuF6qg1d/GmyRjDn764e', 0);
 
 --
 -- Índices para tablas volcadas
 --
-
---
--- Indices de la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_pantalon` (`id_coment_pantalon`);
 
 --
 -- Indices de la tabla `marca`
@@ -158,12 +164,6 @@ ALTER TABLE `usuario`
 --
 
 --
--- AUTO_INCREMENT de la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
@@ -173,23 +173,17 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `pantalon`
 --
 ALTER TABLE `pantalon`
-  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id_pantalones` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `comentarios`
---
-ALTER TABLE `comentarios`
-  ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`id_coment_pantalon`) REFERENCES `pantalon` (`id_pantalones`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `pantalon`
