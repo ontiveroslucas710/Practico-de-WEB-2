@@ -94,7 +94,7 @@ function addComentario() {
             return r.json()
             })
             .then(function (json) {
-                getComentarios(json);
+                getComentarios(json); // no se si esta bien mandar como parametro json
             }).catch(function (e) {
                 console.log(e)
             })
@@ -111,5 +111,4 @@ function limpiarTabla() {
     body.innerHTML = "";
 }
 
-getComentarios();
 
