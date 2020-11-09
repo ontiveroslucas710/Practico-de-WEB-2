@@ -7,3 +7,6 @@ cuando recargas la pagina (aguante el f5)
 
 3) preguntar como averiguar desde javascript si el usuario esta conectado para habilitar boton eliminar
 comentario
+
+4)el archivo formularioComentario.tpl no se esta usando por que ya existe el comentarioPantalon.tpl que hace esa funcion.
+ya lo borre y funciona igual la pagina
