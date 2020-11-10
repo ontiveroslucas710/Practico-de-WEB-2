@@ -5,6 +5,5 @@ Preguntas para hacer !!
 
 2) no llama a getComentarios de buena forma, tenemos que apretar f5 cuando agregamos y esta vacio.
 
-3) preguntar como averiguar desde javascript si el usuario esta conectado para habilitar boton eliminar
-comentario
+
 

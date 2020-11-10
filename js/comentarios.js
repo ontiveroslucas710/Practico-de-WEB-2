@@ -1,15 +1,14 @@
 "use strict"
 
-let path = window.location.pathname;
-let api = 'api';
-let comentario = path.substring(path.length-13, path.lastIndexOf('/')+1);
-let ultimoNumero = path.substring(path.lastIndexOf('/')+1);
-const agregarComentario = "agregarComentario";
+
+let numero = document.querySelector('input[name="idComentario"]').value;
+const agregarComentario = "comentario";
 const borrarComentario = 'api/borrarComentario';
 
 const body = document.getElementById("appearsComments");
 let tableNoComments= document.getElementById("noCommets");
 let nombreUsuario = document.querySelector('input[name="usuarioConectado"]');
+
 
 document.addEventListener('DOMContentLoaded', () => {
     getComentarios();
@@ -20,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
-function getComentarios() {
-    fetch(api+"/"+comentario+ultimoNumero)
+function getComentarios() {  
+    fetch('api/comentario'+"/"+numero)
         .then(response => response.json())
         .then(comentarios => showComentarios(comentarios))
         .catch(error => console.log(error));
@@ -39,16 +38,45 @@ function showComentarios(comentarios){
             let nodotd3 = document.createElement("td");
             nodotd1.innerText = `${coment.comentarios}`;
             nodotd2.innerText = `${coment.puntaje}`;
-            nodotr.id = coment.id;            
-            boton.addEventListener("click", e => eliminar(coment.id));            
-            nodotr.appendChild(nodotd1);
-            nodotr.appendChild(nodotd2);
-            nodotd3.appendChild(boton);
-            nodotr.appendChild(nodotd3);
+            nodotr.id = coment.id;
+            if(nombreUsuario != null){
+                boton.addEventListener("click", e => eliminar(coment.id));            
+                nodotr.appendChild(nodotd1);
+                nodotr.appendChild(nodotd2);
+                nodotd3.appendChild(boton);
+                nodotr.appendChild(nodotd3);
+            }else{
+                nodotr.appendChild(nodotd1);
+                nodotr.appendChild(nodotd2);
+            }
             body.appendChild(nodotr);        
     }
     }else{
         noComments();
+    }
+}
+
+function addComentario() {
+    let comentario = document.querySelector('textarea[name="comentario"]');
+    let puntaje = document.querySelector('select[name="puntaje"]');
+    let id = document.querySelector('input[name="idDelComentario"]');
+    if((comentario.value && puntaje.value) != ""){
+        let data = {
+            comentarios: comentario.value,
+            puntaje: puntaje.value,
+            id_coment_pantalon: id.value
+        }
+        fetch('api'+"/"+agregarComentario, {
+            "method": "POST",
+            "headers": { "Content-Type": "application/json" },
+            "body": JSON.stringify(data)
+        })
+            .then(response => response.json())
+            .then(function irAcomentarios() {
+                getComentarios();
+            }).catch(function (e) {
+                console.log(e)
+            })
     }
 }
 
@@ -69,33 +97,6 @@ function eliminar(id) {
         console.log(e)
     })
 }
-
-
-
-function addComentario() {
-    let comentario = document.querySelector('textarea[name="comentario"]');
-    let puntaje = document.querySelector('select[name="puntaje"]');
-    let id = document.querySelector('input[name="idDelComentario"]');
-    if((comentario.value && puntaje.value) != ""){
-        let data = {
-            comentarios: comentario.value,
-            puntaje: puntaje.value,
-            id_coment_pantalon: id.value
-        }
-        fetch(api+"/"+agregarComentario, {
-            "method": "POST",
-            "headers": { "Content-Type": "application/json" },
-            "body": JSON.stringify(data)
-        })
-            .then(response => response.json())
-            .then(function irAcomentarios() {
-                getComentarios();
-            }).catch(function (e) {
-                console.log(e)
-            })
-    }
-}
-
 
 function noComments(){
     tableNoComments.innerHTML="";

@@ -16,7 +16,7 @@ class apiPantalonController extends ApiController{
     
     public function getComentariosById($params = null){
         $id_comentario = $params[':ID'];
-        $dato = $this->modelComentario->getComentarioPorId($id_comentario);
+        $dato = $this->modelComentario->getComentarioPorIdDePantalon($id_comentario);
         $this->apiView->response($dato, 200);
     }
 
