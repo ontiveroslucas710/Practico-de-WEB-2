@@ -33,6 +33,7 @@
     //acciones de la tabla, agregar, borrar y editar Marca
     $r->addRoute("editMarca/:ID", "GET", "PantalonController", "showFormEditMarca");
     $r->addRoute("borrarMarca/:ID", "GET", "modifierPantalonController", "borrarMarca");
+    $r->addRoute("confirmarElBorrado/:ID", "GET", "modifierPantalonController", "confirmarElBorrado");
     $r->addRoute("agregarMarca", "POST", "modifierPantalonController", "agregarMarca");
 
     //acciones de la tabla, agregar, borrar y editar Pantalon

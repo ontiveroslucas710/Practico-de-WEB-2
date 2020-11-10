@@ -4,11 +4,12 @@ require_once './model/ModelModifierMarca.php';
 require_once './view/View.php';
 
 class modifierPantalonController{
-    private $model;
+    private $modelMarca;
     private $view;
 
     function __construct(){
         $this->view= new View();
+        $this->modelMarca = new ModelMarca();
         $this->modelModifierPantalon = new ModelModifierPantalon();
         $this->modelModifierMarca = new ModelModifierMarca;
         
@@ -83,7 +84,20 @@ class modifierPantalonController{
     function borrarMarca($params = null){
         $this->checkLoggedInAdmin();
         $id_borrarMarca= $params[':ID'];
-        $this->modelModifierMarca->deletMarca($id_borrarMarca);        
+        $dato = $this->modelMarca->getPantalonByMarca($id_borrarMarca);
+        if(count($dato) == 0){
+            $this->modelModifierMarca->deletMarca($id_borrarMarca); 
+            $this->view->volverlocation(); 
+        }else if(count($dato) > 0){
+            $marca = $this->modelMarca->getByEditMarca($id_borrarMarca);
+            $this->view->confirmarEliminacion($id_borrarMarca, $marca);
+        }
+    }
+    
+    function confirmarElBorrado($params = null){
+        $this->checkLoggedInAdmin();
+        $id_borrarMarca= $params[':ID'];
+        $this->modelModifierMarca->deletMarca($id_borrarMarca); 
         $this->view->volverlocation(); 
     }
     

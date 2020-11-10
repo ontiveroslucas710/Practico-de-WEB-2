@@ -63,7 +63,7 @@ class PantalonController{
     
     function verMas($params){
         $id =$params[':ID'];
-        $dato=$this->ModelPantalones->getPantalonYdescripcion($id);
+        $dato=$this->ModelPantalones->getById($id);
         $this->view->filtroCompleto($dato);  
     }
 

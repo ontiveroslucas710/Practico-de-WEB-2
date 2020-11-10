@@ -15,7 +15,6 @@ class ModelPantalones {
         return $result;
     }   
 
-    
     function getById($id){
         $query = $this->db->prepare('SELECT * FROM pantalon JOIN marca ON (pantalon.id_marca=marca.id_marca) AND pantalon.id_pantalones = ?');
         $query->execute(array($id));
@@ -23,10 +22,4 @@ class ModelPantalones {
         return $result;
     } 
 
-    function getPantalonYdescripcion($dato){
-        $query = $this->db->prepare('SELECT * FROM pantalon JOIN marca ON (pantalon.id_marca=marca.id_marca) AND pantalon.id_pantalones = ?');
-        $query->execute(array($dato));
-        $result = $query->fetchAll(PDO::FETCH_OBJ);
-        return $result;
-    }
 }

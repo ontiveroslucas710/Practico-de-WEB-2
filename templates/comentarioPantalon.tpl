@@ -53,6 +53,10 @@
             <button type="submit">agregar</button>
             </form>
         {/if}
+        <!--habria que hacer un foreach con el usuario conectado-->
+        {if isset ($nombre)}
+            <!--<input type="hidden" name="usuarioConectado" value="{$usuario->nombre}">-->
+        {/if}
     </div>
 
     <div id="noCommets">

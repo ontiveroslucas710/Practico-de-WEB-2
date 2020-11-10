@@ -2,11 +2,9 @@ Preguntas para hacer !!
 
 1) no anda bien el registrar, cuando se registra el usuario salta un par de errores en session_start(); 
 (con recarga se soluciona )
-2) error al cargar por primera vez un comentario cuando no existe producto. Se carga. pero se muestra
-cuando recargas la pagina (aguante el f5)
+
+2) no llama a getComentarios de buena forma, tenemos que apretar f5 cuando agregamos y esta vacio.
 
 3) preguntar como averiguar desde javascript si el usuario esta conectado para habilitar boton eliminar
 comentario
 
-4)el archivo formularioComentario.tpl no se esta usando por que ya existe el comentarioPantalon.tpl que hace esa funcion.
-ya lo borre y funciona igual la pagina

@@ -9,6 +9,7 @@ const borrarComentario = 'api/borrarComentario';
 
 const body = document.getElementById("appearsComments");
 let tableNoComments= document.getElementById("noCommets");
+let nombreUsuario = document.querySelector('input[name="usuarioConectado"]');
 
 document.addEventListener('DOMContentLoaded', () => {
     getComentarios();
@@ -21,35 +22,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function getComentarios() {
     fetch(api+"/"+comentario+ultimoNumero)
-        .then(function (r) {
-            if (!r.ok) { //si no existe elementos
-                noComments();
-            }else if(r.ok){//si esta todo bien dame json
-                return r.json()
-            }
-        })
+        .then(response => response.json())
         .then(comentarios => showComentarios(comentarios))
         .catch(error => console.log(error));
 }
 
-function showComentarios(comentarios){  
-    limpiarTabla();
-    for(let coment of comentarios){
-        let boton = document.createElement("button");
-        boton.innerText = "Borrar";
-        let nodotr = document.createElement("tr");
-        let nodotd1 = document.createElement("td");
-        let nodotd2 = document.createElement("td");
-        let nodotd3 = document.createElement("td");
-        nodotd1.innerText = `${coment.comentarios}`;
-        nodotd2.innerText = `${coment.puntaje}`;
-        nodotr.id = coment.id;
-        boton.addEventListener("click", e => eliminar(coment.id));
-        nodotr.appendChild(nodotd1);
-        nodotr.appendChild(nodotd2);
-        nodotd3.appendChild(boton);
-        nodotr.appendChild(nodotd3);
-        body.appendChild(nodotr);        
+function showComentarios(comentarios){
+    if(comentarios.length != 0){
+        limpiarTabla();
+        for(let coment of comentarios){
+            let boton = document.createElement("button");
+            boton.innerText = "Borrar";
+            let nodotr = document.createElement("tr");
+            let nodotd1 = document.createElement("td");
+            let nodotd2 = document.createElement("td");
+            let nodotd3 = document.createElement("td");
+            nodotd1.innerText = `${coment.comentarios}`;
+            nodotd2.innerText = `${coment.puntaje}`;
+            nodotr.id = coment.id;            
+            boton.addEventListener("click", e => eliminar(coment.id));            
+            nodotr.appendChild(nodotd1);
+            nodotr.appendChild(nodotd2);
+            nodotd3.appendChild(boton);
+            nodotr.appendChild(nodotd3);
+            body.appendChild(nodotr);        
+    }
+    }else{
+        noComments();
     }
 }
 
@@ -87,14 +86,10 @@ function addComentario() {
             "method": "POST",
             "headers": { "Content-Type": "application/json" },
             "body": JSON.stringify(data)
-        }).then(function (r) {
-            if (!r.ok) {
-                console.log("error")
-            }
-            return r.json()
-            })
-            .then(function (json) {
-                getComentarios(json); // no se si esta bien mandar como parametro json
+        })
+            .then(response => response.json())
+            .then(function irAcomentarios() {
+                getComentarios();
             }).catch(function (e) {
                 console.log(e)
             })

@@ -13,7 +13,7 @@ class modelComentarios{
         return $result;
     }
 
-    function getComentarioPorId($id_comentario){
+    function getComentarioPorId($id_comentario){//cambiar nombre mas repre
         $query = $this->db->prepare("SELECT * FROM comentarios WHERE id_coment_pantalon = ?");
         $query->execute(array($id_comentario));
         $result = $query->fetchAll(PDO::FETCH_OBJ);
