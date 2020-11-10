@@ -8,10 +8,7 @@ class UserController{
 
     function __construct(){
         $this->view= new UserView();
-        $this->model= new UserModel();
-        if(session_status() !== PHP_SESSION_ACTIVE){
-            session_start();
-        }               
+        $this->model= new UserModel();          
     }   
    
     function iniciarsesion(){
@@ -58,20 +55,20 @@ class UserController{
         $nombre= $_POST['usuario'];
         $contraseña= $_POST['contraseña'];
         if(isset($nombre)){            
-            $BDusuario= $this->model->getusuario($nombre);            
-            if($BDusuario->nombre != $nombre){
+            $BDusuario= $this->model->getusuario($nombre); 
+            if($BDusuario == false){    
                 $hash = password_hash($contraseña,PASSWORD_DEFAULT);
                 $this->model->cargaUsuario($nombre,$hash);
-                session_start();
                 $usuario=$this->model->getusuario($nombre);
+                session_start();
                 $_SESSION['USERNAME_usuario']= $usuario->nombre;
-                $this->view->formRegistro("Se registro con exito");                    
+                $this->view->formRegistro("Se registro con exito");                 
                 $this->view->volverALaHome();
-            }else{
+            }else if($BDusuario == true){
                 $this->view->formRegistro("El usuario ya existe");
             }
         }else{
-            $this->view->formSesion("error");   
+            $this->view->formRegistro("error");   
         }
     }
     

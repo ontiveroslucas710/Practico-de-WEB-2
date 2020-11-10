@@ -1,8 +1,5 @@
 Preguntas para hacer !!
 
-1) no anda bien el registrar, cuando se registra el usuario salta un par de errores en session_start(); 
-(con recarga se soluciona )
-
 2) no llama a getComentarios de buena forma, tenemos que apretar f5 cuando agregamos y esta vacio.
 
 

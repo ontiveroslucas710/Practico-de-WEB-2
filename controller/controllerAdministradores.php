@@ -26,7 +26,7 @@ class controllerAdministradores{
     function mostrarTablaAdministradores(){
         $this->checkLoggedInAdmin();
         $nombre=$_SESSION['USERNAME_admin'];       
-        $dato = $this->modelUsuario->getAllUsuarios($nombre);       
+        $dato = $this->modelUsuario->getUsuariosMenosConectado($nombre);       
         $this->view->showAdministradores($dato);               
     }
 

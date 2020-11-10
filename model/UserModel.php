@@ -15,7 +15,7 @@ class UserModel {
         return $result;
     }
 
-    function getAllUsuarios($nombre){
+    function getUsuariosMenosConectado($nombre){
         $query = $this->db->prepare('SELECT * FROM usuario WHERE nombre<>?');
         $query->execute(array($nombre));
         $result = $query->fetchAll(PDO::FETCH_OBJ);
@@ -36,5 +36,6 @@ class UserModel {
         $query= $this->db->prepare('INSERT INTO usuario (nombre,password) VALUE (?,?)');
         $query->execute(array($nombre,$hash));
     }
+
     
 }
