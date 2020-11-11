@@ -42,7 +42,7 @@
     $r->addRoute("agregarPantalon", "POST", "modifierPantalonController", "insertPantalon");
 
     //formularios
-    $r->addRoute("editPantalon", "POST", "modifierPantalonController", "Edit"); 
+    $r->addRoute("editPantalon", "POST", "modifierPantalonController", "editPantalon"); 
     $r->addRoute("editMarca", "POST", "modifierPantalonController", "editMarca"); 
    
     //Ruta por defecto.

@@ -12,7 +12,15 @@
     <input type="text" name="tela_edit" value="{$item->tela}" required>
     <label for="">precio: </label>
     <input type="number" name="precio_edit" value="{$item->precio}" required>
-    
+        {if $item->imagen}
+            <label for="">imagen: </label>
+            <img width="30px" src= "capturas/{$item->imagen}">
+            
+        {else}
+            <label for="">agregar imagen: </label>
+            <input type="file" name="img_edit" value="{$item->imagen}" required>
+        {/if}
+
     <input type="hidden" name="id" value="{$item->id_pantalones}">
     
 

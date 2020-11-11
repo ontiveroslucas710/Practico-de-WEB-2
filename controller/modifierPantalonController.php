@@ -1,6 +1,7 @@
 <?php
 require_once './model/ModelModifierPantalon.php';
 require_once './model/ModelModifierMarca.php';
+require_once './model/ModelPantalones.php';
 require_once './view/View.php';
 
 class modifierPantalonController{
@@ -12,6 +13,7 @@ class modifierPantalonController{
         $this->modelMarca = new ModelMarca();
         $this->modelModifierPantalon = new ModelModifierPantalon();
         $this->modelModifierMarca = new ModelModifierMarca;
+        $this->modelPantalon = new ModelPantalones;
         
     }
 
@@ -60,7 +62,7 @@ class modifierPantalonController{
         $this->view->volverlocation();   
     }  
 
-    function Edit(){
+    function editPantalon(){
         $this->checkLoggedInAdmin();
         $dato =$_POST['id'];
         $nombre_editar=$_POST['nombre_edit'];
@@ -69,7 +71,8 @@ class modifierPantalonController{
         $tela_editar=$_POST['tela_edit'];
         $precio_editar=$_POST['precio_edit'];
         $marca=$_POST['marca_edit'];        
-        $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar, $marca, $dato);         
+        $imagen=$_POST['img_edit']; // aca si o si toma el valor del input, si esta vacio se guarda vacio y muestra vacio
+        $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar,$imagen, $marca, $dato);         
         $this->view->volverlocation();
     }  
     
