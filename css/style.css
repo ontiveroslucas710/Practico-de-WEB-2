@@ -2,7 +2,9 @@
 header, article, .contactenos{
     text-align: center;
 }
-
+.ocultar{
+    display: none;
+}
 .separarEsteDiv{
     display: flex;
     justify-content: space-between;

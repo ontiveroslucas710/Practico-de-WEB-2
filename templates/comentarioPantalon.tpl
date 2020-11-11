@@ -60,8 +60,8 @@
         {/if}
     </div>
 
-    <div id="noCommets">
-        <table>
+    <div>
+        <table  id="noCommets">
             <thead>
                 <tr>
                     <th>Comentario</th>

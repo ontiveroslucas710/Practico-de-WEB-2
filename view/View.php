@@ -94,6 +94,7 @@ class View {
     function locationAdministrador(){
         header("Location: ".BASE_URL."tablaAdministradore");        
     }
+  
     
 }
 

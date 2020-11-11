@@ -2,13 +2,10 @@
 
 
 let numero = document.querySelector('input[name="idComentario"]').value;
-const agregarComentario = "comentario";
 const borrarComentario = 'api/borrarComentario';
-
 const body = document.getElementById("appearsComments");
 let tableNoComments= document.getElementById("noCommets");
 let nombreUsuario = document.querySelector('input[name="usuarioConectado"]');
-
 
 document.addEventListener('DOMContentLoaded', () => {
     getComentarios();
@@ -18,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 })
 
-
 function getComentarios() {  
     fetch('api/comentario'+"/"+numero)
         .then(response => response.json())
@@ -27,7 +23,9 @@ function getComentarios() {
 }
 
 function showComentarios(comentarios){
+    console.log(comentarios);
     if(comentarios.length != 0){
+        removeNoComments();
         limpiarTabla();
         for(let coment of comentarios){
             let boton = document.createElement("button");
@@ -36,8 +34,8 @@ function showComentarios(comentarios){
             let nodotd1 = document.createElement("td");
             let nodotd2 = document.createElement("td");
             let nodotd3 = document.createElement("td");
-            nodotd1.innerText = `${coment.comentarios}`;
-            nodotd2.innerText = `${coment.puntaje}`;
+            nodotd1.innerHTML = `${coment.comentarios}`;
+            nodotd2.innerHTML = `${coment.puntaje}`;
             nodotr.id = coment.id;
             if(nombreUsuario != null){
                 boton.addEventListener("click", e => eliminar(coment.id));            
@@ -66,14 +64,14 @@ function addComentario() {
             puntaje: puntaje.value,
             id_coment_pantalon: id.value
         }
-        fetch('api'+"/"+agregarComentario, {
+        fetch('api/comentario', {
             "method": "POST",
             "headers": { "Content-Type": "application/json" },
             "body": JSON.stringify(data)
         })
             .then(response => response.json())
             .then(function irAcomentarios() {
-                getComentarios();
+                getComentarios()
             }).catch(function (e) {
                 console.log(e)
             })
@@ -99,8 +97,10 @@ function eliminar(id) {
 }
 
 function noComments(){
-    tableNoComments.innerHTML="";
-    tableNoComments.innerHTML="No hay comentarios aun"
+    tableNoComments.classList.add("ocultar");
+}
+function removeNoComments(){
+    tableNoComments.classList.remove("ocultar");
 }
 
 function limpiarTabla() {
