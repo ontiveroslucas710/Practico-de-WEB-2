@@ -2,11 +2,9 @@
 require_once './model/UserModel.php';
 require_once './view/View.php';
 
-class controllerAdministradores{
- 
+class controllerAdministradores{ 
     private $view;
     private $modelUsuario;
-
     function __construct(){
         $this->view= new View();
         $this->modelUsuario = new UserModel();
@@ -34,13 +32,10 @@ class controllerAdministradores{
     function eliminarUsuario($params = null){
         $this->checkLoggedInAdmin();
         $id_usuario = $params[':ID'];
-        $dato=$this->modelUsuario->getUsuarioById($id_usuario);
-        
-        if($dato->administrador == 1){
-            
-            $this->view->confirmarEliminacionAdmin($id_usuario,$dato);
+        $dato=$this->modelUsuario->getUsuarioById($id_usuario);       
+        if($dato->administrador == 1){            
+            $this->view->confirmarEliminacionAdmin($id_usuario, $dato);
         }else if($dato->administrador != 1){
-
             $this->modelUsuario->deletUsuario($id_usuario);
             $this->view->locationAdministrador();
         }

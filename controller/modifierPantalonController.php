@@ -20,7 +20,6 @@ class modifierPantalonController{
         $this->modelModifierMarca = new ModelModifierMarca();
         
     }
-
     private function checkLoggedInAdmin(){
         if(session_status() !== PHP_SESSION_ACTIVE){
             session_start();

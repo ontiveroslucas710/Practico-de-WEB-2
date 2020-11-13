@@ -1,7 +1,7 @@
 "use strict"
 
 
-let numero = document.querySelector('input[name="idComentario"]').value;
+let numero = document.querySelector('input[name="idComentarioPantalon"]').value;
 const borrarComentario = 'api/borrarComentario';
 const body = document.getElementById("appearsComments");
 let tableNoComments= document.getElementById("noCommets");

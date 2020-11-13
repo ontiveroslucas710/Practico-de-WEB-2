@@ -1,9 +1,6 @@
 {include file= 'header.tpl'}
 
-
-{foreach from=$nombreAdmin item=admin}
-    <h1>Desea eliminar el administrador {$admin->nombre}</h1>
-{/foreach}
+<h1>desea borrar al administrador {$administradorABorrar->nombre}</h1>
 
 {foreach from=$id_borrar item=id}
 <a href="confirmarBorradoAdmin/{$id}"><button>Borrar</button></a>

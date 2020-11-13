@@ -30,7 +30,7 @@
                     <td>{$dato->precio}</td>
                     <td>{$dato->marca}</td>
                 </tr>
-                <input type="hidden" name="idComentario" value="{$dato->id_pantalones}">
+                <input type="hidden" name="idComentarioPantalon" value="{$dato->id_pantalones}">
             {/foreach}
             </tbody>
         </table>
