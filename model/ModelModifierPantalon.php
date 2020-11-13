@@ -19,7 +19,6 @@ class ModelModifierPantalon {
         $query->execute(array($dato));
     }
 
-    
     function editarPantalon($nombre,$talle,$color,$tela,$precio,$imagen,$marca,$dato){      
         $query=$this->db->prepare('UPDATE pantalon SET nombre=?,talle=?,color=?,tela=?,precio=?,imagen=?,id_marca=? WHERE id_pantalones=?');
         $query->execute(array($nombre,$talle,$color,$tela,$precio,$imagen,$marca,$dato));

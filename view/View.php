@@ -75,7 +75,13 @@ class View {
     function confirmarEliminacion($id_borrarMarca, $dato){
         $this->smarty->assign('marcaAEliminar', $dato); 
         $this->smarty->assign('datoAEliminar', $id_borrarMarca); 
-        $this->smarty->display('templates/confirmarEliminacion.tpl');
+        $this->smarty->display('templates/confirmarEliminacionMarca.tpl');
+    }
+
+    function confirmarEliminacionAdmin($id_borrarAdmin,$admin){
+        $this->smarty->assign('id_borrar', $id_borrarAdmin); 
+        $this->smarty->assign('nombreAdmin', $admin); 
+        $this->smarty->display('templates/confirmarEliminacionAdmin.tpl');
     }
 
     function showAdministradores($dato){

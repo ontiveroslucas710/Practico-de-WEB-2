@@ -15,6 +15,13 @@ class UserModel {
         return $result;
     }
 
+    function getUsuarioById($dato){
+        $query= $this->db->prepare('SELECT * FROM usuario WHERE id=?');
+        $query->execute(array($dato));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
     function getUsuariosMenosConectado($nombre){
         $query = $this->db->prepare('SELECT * FROM usuario WHERE nombre<>?');
         $query->execute(array($nombre));

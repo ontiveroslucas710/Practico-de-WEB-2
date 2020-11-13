@@ -24,6 +24,7 @@
     $r->addRoute("comentario/:ID", "GET", "PantalonController", "mostrarComentario");
     $r->addRoute("tablaAdministradore", "GET", "controllerAdministradores", "mostrarTablaAdministradores");
     $r->addRoute("eliminarUsuario/:ID", "GET", "controllerAdministradores", "eliminarUsuario");
+    $r->addRoute("confirmarBorradoAdmin/:ID", "GET", "controllerAdministradores", "confirmarBorradoAdmin");
     $r->addRoute("hacerAdmin/:ID", "GET", "controllerAdministradores", "hacerAdmin");
     $r->addRoute("quitarAdmin/:ID", "GET", "controllerAdministradores", "quitarAdmin");
     //ACCION PARA FILTRAR MARCA

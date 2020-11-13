@@ -2,18 +2,22 @@
 require_once './model/ModelModifierPantalon.php';
 require_once './model/ModelModifierMarca.php';
 require_once './model/ModelPantalones.php';
+require_once './model/ModelMarca.php';
 require_once './view/View.php';
 
 class modifierPantalonController{
-    private $modelMarca;
     private $view;
+    private $modelMarca;
+    private $modelModifierPantalon;
+    private $modelPantalon;
+    private $modelModifierMarca;
 
     function __construct(){
         $this->view= new View();
         $this->modelMarca = new ModelMarca();
         $this->modelModifierPantalon = new ModelModifierPantalon();
-        $this->modelModifierMarca = new ModelModifierMarca;
-        $this->modelPantalon = new ModelPantalones;
+        $this->modelPantalon = new ModelPantalones();
+        $this->modelModifierMarca = new ModelModifierMarca();
         
     }
 
@@ -58,15 +62,20 @@ class modifierPantalonController{
     function editPantalon(){
         $this->checkLoggedInAdmin();
         if((!empty($_POST['id'])) &&(!empty($_POST['nombre_edit'])) &&(!empty($_POST['talle_edit'])) &&(!empty($_POST['color_edit']))
-         &&(!empty($_POST['tela_edit'])) &&(!empty($_POST['precio_edit'])) &&(!empty($_POST['marca_edit'])) &&(!empty($_POST['img_edit']))){
+         &&(!empty($_POST['tela_edit'])) &&(!empty($_POST['precio_edit'])) &&(!empty($_POST['marca_edit']))){
              $dato =$_POST['id'];
              $nombre_editar=$_POST['nombre_edit'];
              $talle_editar=$_POST['talle_edit'];
              $color_editar=$_POST['color_edit'];
              $tela_editar=$_POST['tela_edit'];
              $precio_editar=$_POST['precio_edit'];
-             $marca=$_POST['marca_edit'];        
-             $imagen=$_POST['img_edit'];
+             $marca=$_POST['marca_edit'];
+             if(!empty($_POST['img_edit'])){
+                $imagen=$_POST['img_edit'];
+             }else{
+                $dat= $this->modelPantalon->getImageId($dato);
+                $imagen=$dat['imagen'];
+             }      
              $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar,$imagen, $marca, $dato);         
              $this->view->volverlocation();
          }
@@ -80,7 +89,6 @@ class modifierPantalonController{
             $this->modelModifierMarca->addMarca($marca, $descripcion);
             $this->view->volverlocation();
         }
-       
     }
     
     function borrarMarca($params = null){

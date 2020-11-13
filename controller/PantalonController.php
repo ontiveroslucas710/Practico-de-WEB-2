@@ -24,7 +24,6 @@ class PantalonController{
         }
     }
 
-
     function home(){
         $this->view->nuestraHome();
     }    

@@ -5,6 +5,7 @@ require_once './view/View.php';
 class controllerAdministradores{
  
     private $view;
+    private $modelUsuario;
 
     function __construct(){
         $this->view= new View();
@@ -30,12 +31,25 @@ class controllerAdministradores{
         $this->view->showAdministradores($dato);               
     }
 
-    //abria que hacer alguna funcion para que cuando elimines
-    // un usuario o admin te aparezca estas seguro que quieras borrar?
     function eliminarUsuario($params = null){
         $this->checkLoggedInAdmin();
         $id_usuario = $params[':ID'];
-        $this->modelUsuario->deletUsuario($id_usuario);
+        $dato=$this->modelUsuario->getUsuarioById($id_usuario);
+        
+        if($dato->administrador == 1){
+            
+            $this->view->confirmarEliminacionAdmin($id_usuario,$dato);
+        }else if($dato->administrador != 1){
+
+            $this->modelUsuario->deletUsuario($id_usuario);
+            $this->view->locationAdministrador();
+        }
+    }
+    
+    function confirmarBorradoAdmin($params = null){
+        $this->checkLoggedInAdmin();
+        $id_borrarAdmin= $params[':ID'];
+        $this->modelUsuario->deletUsuario($id_borrarAdmin);
         $this->view->locationAdministrador();
     }
 

@@ -23,7 +23,6 @@ function getComentarios() {
 }
 
 function showComentarios(comentarios){
-    console.log(comentarios);
     if(comentarios.length != 0){
         removeNoComments();
         limpiarTabla();
@@ -70,7 +69,7 @@ function addComentario() {
             "body": JSON.stringify(data)
         })
             .then(response => response.json())
-            .then(function irAcomentarios() {
+            .then(function () {
                 getComentarios()
             }).catch(function (e) {
                 console.log(e)
@@ -82,15 +81,9 @@ function eliminar(id) {
     fetch(borrarComentario + "/"  + id, {
         "method": "DELETE",
         "mode": 'cors',
-
-    }).then(function (r) {
-        if (!r.ok) {
-            console.log("no se pudo borrar el elemento")
-        }else if(r.ok){
-            return r.json()
-        }
-    }).then(function () {
-        getComentarios();
+    })  .then(response => response.json())
+        .then(function () {
+            getComentarios();
     }).catch(function (e) {
         console.log(e)
     })

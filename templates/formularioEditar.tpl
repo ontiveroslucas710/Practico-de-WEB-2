@@ -13,12 +13,12 @@
     <label for="">precio: </label>
     <input type="number" name="precio_edit" value="{$item->precio}" required>
         {if $item->imagen}
-            <label for="">imagen: </label>
+            <label>imagen: </label>
             <img width="30px" src= "capturas/{$item->imagen}">
-            
+            <input type="file" name="img_edit">
         {else}
-            <label for="">agregar imagen: </label>
-            <input type="file" name="img_edit" value="{$item->imagen}" required>
+            <label>agregar imagen: </label>
+            <input type="file" name="img_edit">
         {/if}
 
     <input type="hidden" name="id" value="{$item->id_pantalones}">

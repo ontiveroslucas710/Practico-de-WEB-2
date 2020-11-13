@@ -20,6 +20,13 @@ class ModelPantalones {
         $query->execute(array($id));
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         return $result;
-    } 
+    }
+
+    function getImageId($id){
+        $query = $this->db->prepare('SELECT * FROM pantalon WHERE pantalon.id_pantalones = ?');
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+        return $result; 
+    }
 
 }
