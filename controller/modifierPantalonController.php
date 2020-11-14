@@ -99,7 +99,7 @@ class modifierPantalonController{
             $this->view->volverlocation(); 
         }else if(count($dato) > 0){
             $marca = $this->modelMarca->getByEditMarca($id_borrarMarca);
-            $this->view->confirmarEliminacion($id_borrarMarca, $marca);
+            $this->view->confirmarEliminacionMarca($id_borrarMarca, $marca);
         }
     }
     

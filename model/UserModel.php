@@ -8,16 +8,16 @@ class UserModel {
         $this->db= new PDO('mysql:host=localhost;'.'dbname=db_ropa;charset=utf8', 'root', '');        
     }
     
-    function getusuario($dato){
+    function getusuario($nombre){
         $query= $this->db->prepare('SELECT * FROM usuario WHERE nombre=?');
-        $query->execute(array($dato));
+        $query->execute(array($nombre));
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result;
     }
 
-    function getUsuarioById($dato){
+    function getUsuarioById($id_ususario){
         $query= $this->db->prepare('SELECT * FROM usuario WHERE id=?');
-        $query->execute(array($dato));
+        $query->execute(array($id_ususario));
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result;
     }

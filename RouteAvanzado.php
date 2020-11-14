@@ -27,6 +27,7 @@
     $r->addRoute("confirmarBorradoAdmin/:ID", "GET", "controllerAdministradores", "confirmarBorradoAdmin");
     $r->addRoute("hacerAdmin/:ID", "GET", "controllerAdministradores", "hacerAdmin");
     $r->addRoute("quitarAdmin/:ID", "GET", "controllerAdministradores", "quitarAdmin");
+    
     //ACCION PARA FILTRAR MARCA
     $r->addRoute("filtro/:ID", "GET", "PantalonController", "filtrar");
     $r->addRoute("verMas/:ID", "GET", "PantalonController", "verMas");

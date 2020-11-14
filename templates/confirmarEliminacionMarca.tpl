@@ -5,10 +5,8 @@
     <h1>desea eliminar la marca {$dato->marca}</h1>
 {/foreach}
 
-{foreach from=$datoAEliminar item=dato}
-
-<a href="confirmarElBorrado/{$dato}"><button>borrar</button></a>
+<a href="confirmarElBorrado/{$datoAEliminar}"><button>borrar</button></a>
 
 <a href="tabla_de_pantalones"><button>cancelar</button></a>
-{/foreach}
+
 {include file='footer.tpl'}

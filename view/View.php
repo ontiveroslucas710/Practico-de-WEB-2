@@ -72,7 +72,7 @@ class View {
         $this->smarty->display('templates/comentarioPantalon.tpl');
     }
 
-    function confirmarEliminacion($id_borrarMarca, $dato){
+    function confirmarEliminacionMarca($id_borrarMarca, $dato){
         $this->smarty->assign('marcaAEliminar', $dato); 
         $this->smarty->assign('datoAEliminar', $id_borrarMarca); 
         $this->smarty->display('templates/confirmarEliminacionMarca.tpl');
