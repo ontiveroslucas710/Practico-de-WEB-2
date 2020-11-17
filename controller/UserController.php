@@ -45,7 +45,7 @@ class UserController{
                 }
             }   
         }else{
-            $this->view->formSesion("el Ingrese los datos obligatorios no existe"); 
+            $this->view->formSesion("el Ingrese los datos obligatorios"); 
         }
     }
 
@@ -59,25 +59,24 @@ class UserController{
         if((!empty($_POST['usuario']))&&(!empty($_POST['contraseña']))){
             $nombre= $_POST['usuario'];
             $contraseña= $_POST['contraseña'];
-            if(isset($nombre)){            
+            $tamañoContraseña = strlen($contraseña);
+            if(isset($nombre) && $tamañoContraseña >=6){            
                 $BDusuario= $this->model->getusuario($nombre); 
                 if($BDusuario == false){    
                     $hash = password_hash($contraseña,PASSWORD_DEFAULT);
                     $this->model->cargaUsuario($nombre,$hash);
                     $usuario=$this->model->getusuario($nombre);
                     session_start();
-                    $_SESSION['USERNAME_usuario']= $usuario->nombre;
-                    $this->view->formRegistro("Se registro con exito");                 
+                    $_SESSION['USERNAME_usuario']= $usuario->nombre;               
                     $this->view->volverALaHome();
                 }else if($BDusuario == true){
                     $this->view->formRegistro("El usuario ya existe");
                 }
-            }else{
-                $this->view->formRegistro("error");   
+            }else if(isset($nombre) && $tamañoContraseña < 6){
+                $this->view->formRegistro("contraseña muy corta");
             }
         }else{
             $this->view->formRegistro("Ingrese los datos obligatorios"); 
         }
     }
-    
 }

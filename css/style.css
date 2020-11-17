@@ -182,6 +182,28 @@ thead{
 .separar1{
     margin-top: 15px;
 }
+.seguridadMuyBaja{
+    background-color: red;
+}
+
+.seguridadBaja{
+    background-color: sienna;
+}
+.seguridadMedia{
+    background-color: burlywood;
+}
+.seguridadMediaAlta{
+    background-color: yellow;
+}
+.seguridadAlta{
+    background-color: yellowgreen;
+}
+.seguridadMuyAlta{
+    background-color: green;
+}
+.limpiar{
+    background-color: white;
+}
 /*hago la media para que cuando se agrande la pantalla a mas de 600 se modifique el css y agarre esto*/
 @media only screen and (min-width:600px){
 
@@ -265,6 +287,5 @@ thead{
     }
    .dividir{
        display: flex;
-       
    }
 }

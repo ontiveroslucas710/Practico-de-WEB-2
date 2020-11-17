@@ -13,8 +13,10 @@
                     </div>                    
                     <div class="formulario-in">
                         <label>Contraseña </label>
-                        <input type="password" name="contraseña" required  placeholder="contraseña">
+                        <input type="password" name="contraseña" required  placeholder="contraseña" id="inputClave">
+                        <i id="showContraseña"  style='font-size:24px' class='fas'>&#xf06e;</i>
                     </div>                    
+                         <i><span id="showSeguridad"></span></i> 
                     <div>
                         <input type="submit" id="btn-verificar" value="registrar">
                     </div>
@@ -24,5 +26,5 @@
        
         </div>
     </section>
-
+    <script src="./js/seguridadPassword.js"></script>
 {include file='footer.tpl'}
