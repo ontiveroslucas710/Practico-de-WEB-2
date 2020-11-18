@@ -3,7 +3,7 @@
     require_once 'controller/modifierPantalonController.php';
     require_once 'controller/controllerAdministradores.php';
     require_once 'controller/UserController.php';
-    require_once 'RouterClass.php';
+    require_once './libs/smarty/RouterClass.php';
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
