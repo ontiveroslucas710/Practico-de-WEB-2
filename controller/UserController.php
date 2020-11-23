@@ -6,17 +6,25 @@ class UserController{
     private $model;
     private $view;
 
+
     function __construct(){
         $this->view= new UserView();
-        $this->model= new UserModel();          
+        $this->model= new UserModel();         
     }   
-   
     function iniciarsesion(){
-        $this->view->formSesion();
+        if(!empty ($_SESSION["USERNAME_admin"]) || !empty($_SESSION["USERNAME_usuario"])){
+            $this->view->volverALaHome();
+        }else{  
+            $this->view->formSesion();
+        }
     }
 
     function registrarse(){
-        $this->view->formRegistro();
+        if(!empty ($_SESSION["USERNAME_admin"]) || !empty($_SESSION["USERNAME_usuario"])){
+            $this->view->volverALaHome();
+        }else{  
+            $this->view->formRegistro();
+        }
     }
 
     function verificaForm(){

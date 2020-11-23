@@ -63,8 +63,8 @@ class modifierPantalonController{
     //revisar esta funcion, no tira error si no cargo datos
     function editPantalon(){
         $this->checkLoggedInAdmin();
-        if((isset($_POST['nombre'])) &&(isset($_POST['talle_edit'])) &&(isset($_POST['color_edit'])) &&(isset($_POST['tela_edit']))
-        &&(isset($_POST['precio_edit'])) &&(isset($_POST['marca_edit'])) && (isset($_FILES['img']))){
+        if((isset($_POST['nombre_edit'])) &&(isset($_POST['talle_edit'])) &&(isset($_POST['color_edit'])) &&(isset($_POST['tela_edit']))
+        &&(isset($_POST['precio_edit'])) &&(isset($_POST['marca_edit']))){
             if((!empty($_POST['id'])) &&(!empty($_POST['nombre_edit'])) &&(!empty($_POST['talle_edit'])) &&(!empty($_POST['color_edit']))
             &&(!empty($_POST['tela_edit'])) &&(!empty($_POST['precio_edit'])) &&(!empty($_POST['marca_edit']))){
                 $dato =$_POST['id'];
