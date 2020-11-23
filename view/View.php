@@ -100,6 +100,11 @@ class View {
     function locationAdministrador(){
         header("Location: ".BASE_URL."tablaAdministradore");        
     }
+
+    function showError($mensaje = ""){
+        $this->smarty->assign('mensajeError', $mensaje);
+        $this->smarty->display('templates/errorIngresos.tpl');
+    }
   
     
 }

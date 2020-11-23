@@ -32,22 +32,25 @@ class modifierPantalonController{
     
     function insertPantalon(){
         $this->checkLoggedInAdmin();
-        if((!empty($_POST['nombre'])) &&(!empty($_POST['talle'])) &&(!empty($_POST['color'])) &&(!empty($_POST['tela']))
-        &&(!empty($_POST['precio'])) &&(!empty($_POST['marca']))){
-            if(isset($_FILES['img'])){
+        if((isset($_POST['nombre'])) &&(isset($_POST['talle'])) &&(isset($_POST['color'])) &&(isset($_POST['tela']))
+        &&(isset($_POST['precio'])) &&(isset($_POST['marca'])) && (isset($_FILES['img']))){
+            if((!empty($_POST['nombre'])) &&(!empty($_POST['talle'])) &&(!empty($_POST['color'])) &&(!empty($_POST['tela']))
+            &&(!empty($_POST['precio'])) &&(!empty($_POST['marca'])) && (!empty($_FILES['img']))){
                 $capturas= getcwd()."/capturas/";
                 $destino= tempnam($capturas,$_FILES['img']['tmp_name']);
                 move_uploaded_file($_FILES['img']['tmp_name'], $destino);
                 $destino= basename($destino);
-            }        
-            $nombre=$_POST['nombre'];
-            $talle=$_POST['talle'];
-            $color=$_POST['color'];
-            $tela=$_POST['tela'];
-            $precio=$_POST['precio'];
-            $marcas=$_POST['marca'];        
-            $this->modelModifierPantalon->addPpantalon($nombre,$talle,$color,$tela,$precio,$destino,$marcas);
-            $this->view->volverlocation(); 
+                $nombre=$_POST['nombre'];
+                $talle=$_POST['talle'];
+                $color=$_POST['color'];
+                $tela=$_POST['tela'];
+                $precio=$_POST['precio'];
+                $marcas=$_POST['marca'];        
+                $this->modelModifierPantalon->addPpantalon($nombre,$talle,$color,$tela,$precio,$destino,$marcas);
+                $this->view->volverlocation(); 
+        }else{
+            $this->view->showError("faltan datos obligatorios");
+        }
         }       
      }    
 
@@ -57,36 +60,45 @@ class modifierPantalonController{
         $this->modelModifierPantalon->deletPantalon($id_borrar);        
         $this->view->volverlocation();   
     }  
-
+    //revisar esta funcion, no tira error si no cargo datos
     function editPantalon(){
         $this->checkLoggedInAdmin();
-        if((!empty($_POST['id'])) &&(!empty($_POST['nombre_edit'])) &&(!empty($_POST['talle_edit'])) &&(!empty($_POST['color_edit']))
-         &&(!empty($_POST['tela_edit'])) &&(!empty($_POST['precio_edit'])) &&(!empty($_POST['marca_edit']))){
-             $dato =$_POST['id'];
-             $nombre_editar=$_POST['nombre_edit'];
-             $talle_editar=$_POST['talle_edit'];
-             $color_editar=$_POST['color_edit'];
-             $tela_editar=$_POST['tela_edit'];
-             $precio_editar=$_POST['precio_edit'];
-             $marca=$_POST['marca_edit'];
-             if(!empty($_POST['img_edit'])){
-                $imagen=$_POST['img_edit'];
-             }else{
+        if((isset($_POST['nombre'])) &&(isset($_POST['talle_edit'])) &&(isset($_POST['color_edit'])) &&(isset($_POST['tela_edit']))
+        &&(isset($_POST['precio_edit'])) &&(isset($_POST['marca_edit'])) && (isset($_FILES['img']))){
+            if((!empty($_POST['id'])) &&(!empty($_POST['nombre_edit'])) &&(!empty($_POST['talle_edit'])) &&(!empty($_POST['color_edit']))
+            &&(!empty($_POST['tela_edit'])) &&(!empty($_POST['precio_edit'])) &&(!empty($_POST['marca_edit']))){
+                $dato =$_POST['id'];
+                $nombre_editar=$_POST['nombre_edit'];
+                $talle_editar=$_POST['talle_edit'];
+                $color_editar=$_POST['color_edit'];
+                $tela_editar=$_POST['tela_edit'];
+                $precio_editar=$_POST['precio_edit'];
+                $marca=$_POST['marca_edit'];
+                if(!empty($_POST['img_edit'])){
+                    $imagen=$_POST['img_edit'];
+                }else{
                 $dat= $this->modelPantalon->getImageId($dato);
                 $imagen=$dat['imagen'];
-             }      
-             $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar,$imagen, $marca, $dato);         
-             $this->view->volverlocation();
+                }      
+                $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar,$imagen, $marca, $dato);         
+                $this->view->volverlocation();
+            }else{
+                $this->view->showError("faltan datos obligatorios");
+            }
          }
     }  
     
     function agregarMarca(){
         $this->checkLoggedInAdmin();
-        if((!empty($_POST['marca'])) && (!empty($_POST['descripcion']))){
-            $marca=$_POST['marca'];
-            $descripcion=$_POST['descripcion'];
-            $this->modelModifierMarca->addMarca($marca, $descripcion);
-            $this->view->volverlocation();
+        if(isset($_POST['marca']) && isset($_POST['descripcion'])){
+            if((!empty($_POST['marca'])) && (!empty($_POST['descripcion']))){
+                $marca=$_POST['marca'];
+                $descripcion=$_POST['descripcion'];
+                $this->modelModifierMarca->addMarca($marca, $descripcion);
+                $this->view->volverlocation();
+        }else{
+            $this->view->showError("faltan datos obligatorios");
+        }
         }
     }
     
@@ -112,12 +124,16 @@ class modifierPantalonController{
     
     function editMarca(){
         $this->checkLoggedInAdmin();
-        if((!empty($_POST['id_edit'])) && (!empty($_POST['marca_edit'])) && (!empty($_POST['descripcion_edit']))){
-        $dato =$_POST['id_edit'];
-        $marca_editar=$_POST['marca_edit'];
-        $descrip_editar=$_POST['descripcion_edit'];
-        $this->modelModifierMarca->editarMarca($marca_editar, $descrip_editar, $dato); 
-        $this->view->volverlocation();  
+        if((isset($_POST['id_edit'])) && (isset($_POST['marca_edit'])) && (isset($_POST['descripcion_edit']))){
+            if((!empty($_POST['id_edit'])) && (!empty($_POST['marca_edit'])) && (!empty($_POST['descripcion_edit']))){
+            $dato =$_POST['id_edit'];
+            $marca_editar=$_POST['marca_edit'];
+            $descrip_editar=$_POST['descripcion_edit'];
+            $this->modelModifierMarca->editarMarca($marca_editar, $descrip_editar, $dato); 
+            $this->view->volverlocation();  
+        }else{
+            $this->view->showError("faltan datos obligatorios");
+        }
         }
     }
 }
