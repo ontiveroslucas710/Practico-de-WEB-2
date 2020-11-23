@@ -9,6 +9,9 @@ header, article, .contactenos{
     display: flex;
     justify-content: space-between;
 }
+.checked {
+    color: orange;
+}
 article, .guiaTRopa, .ropa, .contactenos, #coleccion{
     background-image: url(../img/fondo.jpg);
 }

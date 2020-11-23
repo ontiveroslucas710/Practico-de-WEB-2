@@ -34,7 +34,9 @@ function showComentarios(comentarios){
             let nodotd2 = document.createElement("td");
             let nodotd3 = document.createElement("td");
             nodotd1.innerHTML = `${coment.comentarios}`;
-            nodotd2.innerHTML = `${coment.puntaje}`;
+            for(let i=0; i<`${coment.puntaje}`; i++){
+                nodotd2.innerHTML += '<span class="fa fa-star"></span>';
+            }
             nodotr.id = coment.id;
             if(nombreUsuario != null){
                 boton.addEventListener("click", e => eliminar(coment.id));            
