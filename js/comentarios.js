@@ -35,8 +35,7 @@ function showComentarios(comentarios){
             let nodotd3 = document.createElement("td");
             let data = stars(`${coment.puntaje}`);
             nodotd1.innerHTML = `${coment.comentarios}`;
-            nodotd2.innerHTML = data;
-            
+            nodotd2.innerHTML = data;            
             nodotr.id = coment.id;
             if(nombreUsuario != null){
                 boton.addEventListener("click", e => eliminar(coment.id));            
@@ -112,7 +111,7 @@ function stars(puntaje){
         nodo ="<span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
     }
     else if(puntaje == 3){
-        nodo = '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>  <span class="fa fa-star checked"></span> <span class="fa fa-star"></span><span class="fa fa-star"></span>';
+        nodo = '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span> <span class="fa fa-star"></span><span class="fa fa-star"></span>';
     }
     else if(puntaje == 4){
         nodo = '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span>';
