@@ -33,10 +33,10 @@ function showComentarios(comentarios){
             let nodotd1 = document.createElement("td");
             let nodotd2 = document.createElement("td");
             let nodotd3 = document.createElement("td");
+            let data = stars(`${coment.puntaje}`);
             nodotd1.innerHTML = `${coment.comentarios}`;
-            for(let i=0; i<`${coment.puntaje}`; i++){
-                nodotd2.innerHTML += '<span class="fa fa-star checked"></span>';
-            }
+            nodotd2.innerHTML = data;
+            
             nodotr.id = coment.id;
             if(nombreUsuario != null){
                 boton.addEventListener("click", e => eliminar(coment.id));            
@@ -91,6 +91,7 @@ function eliminar(id) {
     })
 }
 
+
 function noComments(){
     tableNoComments.classList.add("ocultar");
 }
@@ -102,4 +103,22 @@ function limpiarTabla() {
     body.innerHTML = "";
 }
 
+function stars(puntaje){
+    let nodo;
+    if(puntaje == 1){
+        nodo ='<span class="fa fa-star checked"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span><span class="fa fa-star"></span>';
+    }
+    else if(puntaje == 2){
+        nodo ="<span class='fa fa-star checked'></span><span class='fa fa-star checked'></span><span class='fa fa-star'></span><span class='fa fa-star'></span><span class='fa fa-star'></span>";
+    }
+    else if(puntaje == 3){
+        nodo = '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>  <span class="fa fa-star checked"></span> <span class="fa fa-star"></span><span class="fa fa-star"></span>';
+    }
+    else if(puntaje == 4){
+        nodo = '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star"></span>';
+    }else if(puntaje == 5){
+        nodo = '<span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span><span class="fa fa-star checked"></span>';
+    }
+return nodo;
+}
 
