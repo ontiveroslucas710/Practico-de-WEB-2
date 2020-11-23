@@ -35,7 +35,7 @@ function showComentarios(comentarios){
             let nodotd3 = document.createElement("td");
             nodotd1.innerHTML = `${coment.comentarios}`;
             for(let i=0; i<`${coment.puntaje}`; i++){
-                nodotd2.innerHTML += '<span class="fa fa-star"></span>';
+                nodotd2.innerHTML += '<span class="fa fa-star checked"></span>';
             }
             nodotr.id = coment.id;
             if(nombreUsuario != null){
