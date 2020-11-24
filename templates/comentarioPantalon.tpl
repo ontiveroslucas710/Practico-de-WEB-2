@@ -39,7 +39,7 @@
         {if isset($nombreUsuario) || isset($nombre)}
             <form id="agregarComentario" method="post">
                 <label for="">comentario</label>
-                <textarea name="comentario" id="" cols="30" rows="1"></textarea>
+                <textarea name="comentario" cols="30" rows="1"></textarea>
                 <label for="">puntaje</label>
                 <select name="puntaje" id="">
                     <option value="1">1</option>
@@ -47,17 +47,24 @@
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
-                </select>  
+                </select>
+                {if isset($nombre)}
+                <input type="hidden" name="nombreAdmin"  value="admin {$nombre}">
+                {else if isset($nombreUsuario)}
+                <input type="hidden" name="nombreUsuarioRegistrado" value="{$nombreUsuario}">
+                {/if}  
+                
                 {foreach from=$panta item=dato}     
                     <input type="hidden" name="idDelComentario" value="{$dato->id_pantalones}">
                 {/foreach} 
                 <button type="submit">agregar</button>
             </form>
         {/if}
-        
-        {if isset ($nombre)}
-            <input type="hidden" name="usuarioConectado" value="{$nombre}">
-        {/if}
+        <br>
+        <label for="">busca por calificacion</label>
+        <input type="number" name="filtro" id="puntajeAFiltrar">
+        <button type="button" id="filtrar">Filtrar</button>
+        <button type="button" id="sacarFiltro">Tabla sin filtro</button>
     </div>
 
     <div>
@@ -66,6 +73,7 @@
                 <tr>
                     <th>Comentario</th>
                     <th>Puntaje</th>
+                    <th>comentador por</th>
                     {if isset ($nombre)}
                         <th>Borrar comentario</th>
                     {/if}
@@ -75,6 +83,9 @@
             </tbody>
         </table>
     </div>
+        {if isset ($nombre)}
+            <input type="hidden" name="usuarioConectado" value="{$nombre}">
+        {/if}
 
 
 </div>

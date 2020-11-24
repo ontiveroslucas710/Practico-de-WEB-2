@@ -35,9 +35,10 @@ class apiPantalonController extends ApiController{
         $body = $this->getData();
         $comentario = $body->comentarios;
         $puntaje = $body->puntaje;
+        $commentedBy = $body->commentedBy;
         $id_coment_pantalon = $body->id_coment_pantalon;
 
-        $id_dato = $this->modelComentario->agregarComentarioATabla($comentario, $puntaje, $id_coment_pantalon);
+        $id_dato = $this->modelComentario->agregarComentarioATabla($comentario, $puntaje, $commentedBy, $id_coment_pantalon);
         if (!empty($id_dato)) {
             $this->apiView->response("el comentario fue agregado con exito", 200);
         }

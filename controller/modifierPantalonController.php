@@ -60,7 +60,7 @@ class modifierPantalonController{
         $this->modelModifierPantalon->deletPantalon($id_borrar);        
         $this->view->volverlocation();   
     }  
-    //revisar esta funcion, no tira error si no cargo datos
+   
     function editPantalon(){
         $this->checkLoggedInAdmin();
         if((isset($_POST['nombre_edit'])) &&(isset($_POST['talle_edit'])) &&(isset($_POST['color_edit'])) &&(isset($_POST['tela_edit']))
