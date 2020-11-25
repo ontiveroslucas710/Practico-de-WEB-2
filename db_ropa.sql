@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-11-2020 a las 16:31:49
+-- Tiempo de generación: 25-11-2020 a las 15:17:33
 -- Versión del servidor: 10.4.13-MariaDB
 -- Versión de PHP: 7.4.7
 
@@ -48,7 +48,11 @@ INSERT INTO `comentarios` (`id`, `comentarios`, `puntaje`, `commentedBy`, `id_co
 (144, 'comentarios para ver filtro', 5, 'admin mariano123', 24),
 (145, 'comentarios para ver ', 5, 'admin mariano123', 24),
 (146, 'otra cosa', 3, 'admin mariano123', 24),
-(147, 'otra cosa nueva', 2, 'admin mariano123', 24);
+(147, 'otra cosa nueva', 2, 'admin mariano123', 24),
+(148, 'prueba', 2, 'unodeprueba', 30),
+(149, 'ahora ? ', 1, 'admin unodeprueba', 30),
+(150, 'ajskldas', 1, 'admin mariano123', 24),
+(151, 'masdas', 1, 'admin mariano123', 24);
 
 -- --------------------------------------------------------
 
@@ -129,7 +133,8 @@ INSERT INTO `usuario` (`id`, `nombre`, `password`, `administrador`) VALUES
 (9, 'usuario1', '$2y$10$tvd32pOWVMlQ1rEnwk4jHeURIDcpSMep4BEZ/U3eqike8EIkU/6fO', 1),
 (44, 'usuario2', '$2y$10$bkDIvef/grr/DcsGgwBCWeN4/OfB.a3cIzeq5yvXF88Hsrq7ppgwa', 0),
 (45, 'marianomayo', '$2y$10$/wudlfVYF0Yl57.DPnEK2eQPNC0f5q6RFQsJqf.YQxxnIL6MGpjYy', 0),
-(46, 'camila', '$2y$10$AdTaxh3ihi1YqcLMeQrnouMWR47Ym0tAzWaBUGwQAu7poKWejKDKS', 0);
+(46, 'camila', '$2y$10$AdTaxh3ihi1YqcLMeQrnouMWR47Ym0tAzWaBUGwQAu7poKWejKDKS', 0),
+(47, 'unodeprueba', '$2y$10$zbUT9gHiFFacylQEeFCQ6.s3hXwlhG/UYdPa/0ANpAmVcCFKy31yq', 1);
 
 --
 -- Índices para tablas volcadas
@@ -169,7 +174,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=152;
 
 --
 -- AUTO_INCREMENT de la tabla `marca`
@@ -187,7 +192,7 @@ ALTER TABLE `pantalon`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- Restricciones para tablas volcadas
