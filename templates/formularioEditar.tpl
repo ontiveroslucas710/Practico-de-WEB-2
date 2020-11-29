@@ -15,7 +15,11 @@
         {if $item->imagen}
             <label>imagen: </label>
             <img width="30px" src= "capturas/{$item->imagen}">
+
+            <input type="checkbox"  name="borrarImg"> eliminar
+            
             <input type="file" name="img_edit">
+            
         {else}
             <label>agregar imagen: </label>
             <input type="file" name="img_edit">

@@ -74,12 +74,17 @@ class modifierPantalonController{
                 $tela_editar=$_POST['tela_edit'];
                 $precio_editar=$_POST['precio_edit'];
                 $marca=$_POST['marca_edit'];
+                
                 if(!empty($_POST['img_edit'])){
                     $imagen=$_POST['img_edit'];
                 }else{
-                $dat= $this->modelPantalon->getImageId($dato);
-                $imagen=$dat['imagen'];
-                }      
+                    $dat= $this->modelPantalon->getImageId($dato);
+                    $imagen=$dat['imagen'];
+
+                    if(!empty($_POST['borrarImg'])){
+                        $imagen= null;
+                    }
+                }
                 $this->modelModifierPantalon->editarPantalon($nombre_editar,$talle_editar,$color_editar, $tela_editar, $precio_editar,$imagen, $marca, $dato);         
                 $this->view->volverlocation();
             }else{
