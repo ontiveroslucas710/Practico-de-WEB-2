@@ -30,6 +30,17 @@ function seguridadClave(clave){
             else if(tiene_minusculas(clave) && tiene_mayusculas(clave) && clave.length >=6){
                 seguridad = 0;
                 seguridad+= 50;
+            }else if(tiene_mayusculas(clave) && tiene_objetos(clave) && tiene_numeros(clave) && clave.length >=6){
+                seguridad = 0;
+                seguridad+= 80;
+            }
+            else if(tiene_mayusculas(clave) && tiene_objetos(clave) && clave.length >=6){
+                seguridad = 0;
+                seguridad+= 40;
+            }
+            else if(tiene_minusculas(clave) && tiene_objetos(clave) && clave.length >=6){
+                seguridad = 0;
+                seguridad+= 40;
             }
             else if(tiene_minusculas(clave) && tiene_numeros(clave) && clave.length >=6){
                 seguridad = 0;
