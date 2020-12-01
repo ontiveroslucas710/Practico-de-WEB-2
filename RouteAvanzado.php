@@ -14,7 +14,7 @@
     $r->addRoute("login", "GET", "UserController", "iniciarsesion");
     $r->addRoute("logout", "GET", "UserController", "logout");
     $r->addRoute("sigin", "GET", "UserController", "registrarse");
-    $r->addRoute("registr", "POST", "UserController", "sigin");
+    $r->addRoute("sigin", "POST", "UserController", "sigin");
     
     
     $r->addRoute("home", "GET", "PantalonController", "home");

@@ -1,7 +1,7 @@
 {include file="header.tpl"}
 
 {foreach from=$pantalon item=item }
-<form action="editPantalon" method='POST'>
+<form action="editPantalon" method='POST' >
     <label for="">nombre: </label>
     <input type="text" name="nombre_edit" value="{$item->nombre}" required>
     <label for="">talle: </label>
@@ -15,8 +15,8 @@
         {if $item->imagen}
             <label>imagen: </label>
             <img width="30px" src= "capturas/{$item->imagen}">
-
-            <input type="checkbox"  name="borrarImg"> eliminar
+            <label>Eliminar </label>
+            <input type="checkbox"  name="borrarImg">
             
             <input type="file" name="img_edit">
             

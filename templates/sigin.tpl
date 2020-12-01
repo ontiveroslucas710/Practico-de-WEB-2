@@ -6,7 +6,7 @@
             <h3>{$mensaje}</h3>
                 <div class="formulario">
 
-                    <form action="registr" method='POST'>
+                    <form action="sigin" method='POST'>
                         <div class="formulario-in">
                             <label>Usuario</label>
                             <input type="text" name="usuario" required placeholder="Usuario">

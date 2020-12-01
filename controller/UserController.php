@@ -64,7 +64,9 @@ class UserController{
     }
 
     function sigin(){
+        
         if((!empty($_POST['usuario']))&&(!empty($_POST['contraseña']))){
+
             $nombre= $_POST['usuario'];
             $contraseña= $_POST['contraseña'];
             $tamañoContraseña = strlen($contraseña);

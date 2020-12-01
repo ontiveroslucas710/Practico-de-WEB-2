@@ -32,6 +32,7 @@ class modifierPantalonController{
     
     function insertPantalon(){
         $this->checkLoggedInAdmin();
+        
         if((isset($_POST['nombre'])) &&(isset($_POST['talle'])) &&(isset($_POST['color'])) &&(isset($_POST['tela']))
         &&(isset($_POST['precio'])) &&(isset($_POST['marca'])) && (isset($_FILES['img']))){
             if((!empty($_POST['nombre'])) &&(!empty($_POST['talle'])) &&(!empty($_POST['color'])) &&(!empty($_POST['tela']))
@@ -40,6 +41,7 @@ class modifierPantalonController{
                 $destino= tempnam($capturas,$_FILES['img']['tmp_name']);
                 move_uploaded_file($_FILES['img']['tmp_name'], $destino);
                 $destino= basename($destino);
+                
                 $nombre=$_POST['nombre'];
                 $talle=$_POST['talle'];
                 $color=$_POST['color'];
@@ -74,6 +76,7 @@ class modifierPantalonController{
                 $tela_editar=$_POST['tela_edit'];
                 $precio_editar=$_POST['precio_edit'];
                 $marca=$_POST['marca_edit'];
+                
                 
                 if(!empty($_POST['img_edit'])){
                     $imagen=$_POST['img_edit'];

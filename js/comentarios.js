@@ -134,7 +134,7 @@ function whoCommented(){
 
 function filtrarTabla() {
     ocultarLosTr();
-    let inputFiltro = document.getElementById("puntajeAFiltrar").value;
+    let inputFiltro = document.querySelector("select[name='puntajeAfiltrar']").selectedIndex+1;
     console.log(inputFiltro);
     for (let elem of arreglo) {
         if (elem.puntaje.includes(inputFiltro)) {
